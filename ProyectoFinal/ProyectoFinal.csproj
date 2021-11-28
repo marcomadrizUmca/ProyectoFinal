@@ -288,6 +288,7 @@
     <Content Include="Views\Monedas\MonedaModifica.cshtml" />
     <Content Include="Views\Monedas\MonedaElimina.cshtml" />
     <Content Include="Views\Cuentas\CuentasLista.cshtml" />
+    <Content Include="Views\Cuentas\CuentaNueva.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

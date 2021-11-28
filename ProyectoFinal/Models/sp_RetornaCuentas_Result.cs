@@ -16,8 +16,14 @@ namespace ProyectoFinal.Models
         public int Id_Cuenta { get; set; }
         public string Numero_Cuenta { get; set; }
         public int Id_Cliente { get; set; }
+        public int Cedula { get; set; }
+        public string NombreCliente { get; set; }
+        public string ApellidoCliente { get; set; }
+        public string SegundoApellido { get; set; }
         public int Id_Tipo_Cuenta { get; set; }
+        public string NombreCuenta { get; set; }
         public int Id_Moneda { get; set; }
+        public string NombreMonneda { get; set; }
         public decimal Saldo { get; set; }
         public string Estado { get; set; }
     }
