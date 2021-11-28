@@ -1,0 +1,50 @@
+﻿@model List<ProyectoFinal.Models.sp_RetornaClientes_Result>
+
+@{
+    ViewBag.Title = "ClienteLista";
+}
+
+<h2>Lista de Cliente</h2>
+
+<a href="~/Clientes/ClienteNuevo">Agregar Cliente</a>
+<br />
+
+<table class="table">
+    <tr>
+        <th>Cedula</th>
+        <th>Genero</th>
+        <th>Fecha Nacimicento</th>
+        <th>Nombre Completo</th>
+        <th>Dirección</th>
+        <th>Telefono Principal</th>
+        <th>Telefono Secundario</th>
+        <th>Correo Electronico</th>
+        <th>Tipo Cliente</th>
+        <th>Acciones</th>
+    </tr>
+    @{ 
+        foreach (ProyectoFinal.Models.sp_RetornaClientes_Result posicionModelo in this.Model) { 
+            <tr>
+                <td>@posicionModelo.Cedula</td>
+                <td>@posicionModelo.Genero</td>
+                <td>@posicionModelo.Fecha_Nacimiento</td>
+                <td>@posicionModelo.Primer_Apellido @posicionModelo.Segundo_Apellido @posicionModelo.Nombre</td>
+                <td>@posicionModelo.Direccion_Fisica</td>
+                <td>@posicionModelo.Telefono_Principal</td>
+                <td>@posicionModelo.Telefono_Secundario</td>
+                <td>@posicionModelo.Correo_Electronico</td>
+                <td>@posicionModelo.Tipo_Cliente</td>   
+                <td>
+                    <a href="~/Clientes/ClienteModifica?Id_Cliente=@posicionModelo.Id_Cliente">Modificar</a>
+                    <br />
+                    <a href="~/Clientes/ClienteElimina?Id_Cliente=@posicionModelo.Id_Cliente">Eliminar</a>
+                </td>
+            </tr>
+        }
+
+
+    }
+
+
+</table>
+

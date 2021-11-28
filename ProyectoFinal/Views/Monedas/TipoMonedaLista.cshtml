@@ -1,0 +1,39 @@
+﻿@model List<ProyectoFinal.Models.sp_RetornaMonedas_Result>
+
+@{
+    ViewBag.Title = "TipoMonedaLista";
+}
+
+<h2>Tipo Moneda Lista</h2>
+
+<a href="~/Monedas/MonedaNuevo">Agregar un Tipo de Cliente</a>
+
+<table class="table">
+    <tr>
+        <th>Nombre</th>
+        <th>Tipo de Cambio</th>
+        <th>Codigo</th>
+        <th>Acciones</th>
+    </tr>
+    @{
+        foreach (ProyectoFinal.Models.sp_RetornaMonedas_Result  posicionModelo in this.Model)
+        {
+        <tr>
+            <td>@posicionModelo.Nombre</td>
+            <td>@posicionModelo.Tipo_Cambio</td>
+            <td>@posicionModelo.Codigo</td>
+
+
+            <td>
+                <a href="~/Monedas/MonedaModifica?Id_Moneda=@posicionModelo.Id_Moneda">Modificar</a>
+                <br />
+                <a href="~/Monedas/MonedaElimina?Id_Moneda=@posicionModelo.Id_Moneda">Eliminar</a>
+        </td>
+</tr>
+        }
+
+
+    }
+
+
+</table>

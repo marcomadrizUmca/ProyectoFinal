@@ -1,0 +1,33 @@
+﻿@model ProyectoFinal.Models.sp_RetornaTipo_Clientes_Result
+
+@{
+    ViewBag.Title = "TipoClienteElimina";
+}
+
+<h2>TipoClienteElimina</h2>
+
+<form id="frmEliminaTipoCliente" method="post">
+    <div class="form-group">
+        <label>Nombre:</label>
+        <input type="text" id="Nombre" name="Nombre" class="form-control" value="@Model.Nombre" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Descripcion:</label>
+        <input type="text" name="Descripcion" id="Descripcion" class="form-control" value="@Model.Descripcion" readonly/>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Eliminar" id="btnAceptar" />
+    </div>
+
+
+    <a href="~/TiposClientes/TipoClienteLista">Regresar a la Lista</a>
+
+
+</form>
+
+@Html.ValidationSummary(true)
+@section scripts{
+    <script src="~/Scripts/Validaciones/ClienteNuevo.js"></script>
+}

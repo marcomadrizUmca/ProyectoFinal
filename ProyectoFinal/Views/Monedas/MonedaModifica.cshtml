@@ -1,0 +1,38 @@
+﻿@model ProyectoFinal.Models.sp_RetornaMonedas_Result
+
+@{
+    ViewBag.Title = "MonedaModifica";
+}
+
+<h2>Moneda Modifica</h2>
+
+<form id="frmModificaMonedas" method="post">
+    <div class="form-group">
+        <label>Nombre:</label>
+        <input type="text" id="Nombre" name="Nombre" class="form-control" value="@Model.Nombre" />
+    </div>
+
+    <div class="form-group">
+        <label>Tipo de Cambio:</label>
+        <input type="text" id="Tipo_Cambio" name="Tipo_Cambio" class="form-control" value="@Model.Tipo_Cambio"/>
+    </div>
+
+    <div class="form-group">
+        <label>Codigo:</label>
+        <input type="text" name="Codigo" id="Codigo" class="form-control" value="@Model.Codigo" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Modificar" id="btnAceptar" />
+    </div>
+
+
+    <a href="~/Monedas/TipoMonedaLista">Regresar a la Lista</a>
+
+
+</form>
+
+@Html.ValidationSummary(true)
+@section scripts{
+    <script src="~/Scripts/Validaciones/ClienteNuevo.js"></script>
+}

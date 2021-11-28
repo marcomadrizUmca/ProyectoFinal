@@ -1,0 +1,38 @@
+﻿@model ProyectoFinal.Models.sp_RetornaMonedas_Result
+
+@{
+    ViewBag.Title = "MonedaElimina";
+}
+
+<h2>Moneda Elimina</h2>
+
+<form id="frmEliminaMonedas" method="post">
+    <div class="form-group">
+        <label>Nombre:</label>
+        <input type="text" id="Nombre" name="Nombre" class="form-control" value="@Model.Nombre" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Tipo de Cambio:</label>
+        <input type="text" id="Tipo_Cambio" name="Tipo_Cambio" class="form-control" value="@Model.Tipo_Cambio" readonly/>
+    </div>
+
+    <div class="form-group">
+        <label>Codigo:</label>
+        <input type="text" name="Codigo" id="Codigo" class="form-control" value="@Model.Codigo" readonly/>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Eliminar" id="btnAceptar" />
+    </div>
+
+
+    <a href="~/Monedas/TipoMonedaLista">Regresar a la Lista</a>
+
+
+</form>
+
+@Html.ValidationSummary(true)
+@section scripts{
+    <script src="~/Scripts/Validaciones/ClienteNuevo.js"></script>
+}

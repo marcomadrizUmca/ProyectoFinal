@@ -1,0 +1,127 @@
+﻿@*@model ProyectoFinal.Models.sp_RetornaClientes_Result *@
+@{
+    ViewBag.Title = "ClienteNuevo";
+}
+
+<h2>Agregando Cliente Nuevo</h2>
+
+<form id="frmNuevoCliente" method="post">
+    <div class="form-group">
+        <label>Cedula:</label>
+        <input type="text" id="Cedula" name="Cedula" class="form-control" />
+    </div>
+    <br />
+    <div class="form-check">
+        <label>Genero:  </label>
+
+        @*<label>Femenino</label> @Html.RadioButtonFor(m => m.Genero, "Femenino")
+
+            <label>Masculino</label> @Html.RadioButtonFor(m => m.Genero, "Masculino")
+
+            <label>Indefinido</label>  @Html.RadioButtonFor(m => m.Genero, "Indefinido")*@
+
+
+        <input type="radio" name="Genero" value="Femenino" class="form-check-input" /> Femenino
+
+        <input type="radio" name="Genero" value="Masculino" class="form-check-input" /> Masculino
+
+        <input type="radio" name="Genero" value="Indefinido" class="form-check-input" /> Indefinido
+
+
+    </div>
+    <br />
+    <div class="form-group">
+        <label>Fecha de Nacimiento:</label>
+        <input type="date" name="Fecha_Nacimiento" id="Fecha_Nacimiento" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Nombre:</label>
+        <input type="text" name="Nombre" id="Nombre" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Primero Apellido:</label>
+        <input type="text" name="Primer_Apellido" id="Primer_Apellido" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Segundo Apellido:</label>
+        <input type="text" name="Segundo_Apellido" id="Segundo_Apellido" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Dirección Fisica:</label>
+        <input type="text" name="Direccion_Fisica" id="Direccion_Fisica" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Telefono Principal:</label>
+        <input type="text" name="Telefono_Principal" id="Telefono_Principal" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Telefono Secundario:</label>
+        <input type="text" name="Telefono_Secundario" id="Telefono_Secundario" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Correo electrónico:</label>
+        <input type="email" name="Correo_Electronico" id="Correo_Electronico" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Tipo de Cliente :</label>
+        @*  @Html.DropDownListFor(model => model.Tipo_Cliente, (IEnumerable<SelectListItem>)ViewBag.ListaTiposClientes, "Sin seleccionar", new { @class = "form-control", @required = "required" })*@
+
+        <select name="Tipo_Cliente" id="Tipo_Cliente" class="form-control">
+            <option value="">SELECCIONE UNA OPCIÓN</option>
+            @{
+                foreach (ProyectoFinal.Models.sp_RetornaTipo_Clientes_Result tipoCliente
+                    in this.ViewBag.ListaTipoCliente)
+                {
+                    <option value="@tipoCliente.Id_Tipo_Cliente">@tipoCliente.Nombre.ToUpper() </option>
+                }
+
+            }
+        </select>
+
+    </div>
+
+    <div class="form-group">
+        <label>Clave:</label>
+        <div class="form-row">
+            <div class="col">
+                <input type="password" name="Clave_Acceso" id="Clave_Acceso" class="form-control" />
+            </div>
+            <div class="col">
+                <button class="btn-toolbar" type="button" onclick="mostrarContrasena()">Mostrar Contraseña</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Guardar" id="btnAceptar" />
+    </div>
+
+
+    <a href="~/Clientes/ClienteLista">Regresar a la Lista</a>
+
+
+</form>
+
+@Html.ValidationSummary(true)
+@section scripts{
+    <script src="~/Scripts/Validaciones/ClienteNuevo.js"></script>
+}
+
+<script>
+    function mostrarContrasena() {
+        var tipo = document.getElementById("Clave_Acceso");
+        if (tipo.type == "password") {
+            tipo.type = "text";
+        } else {
+            tipo.type = "password";
+        }
+    }
+</script>

@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "MonedaNuevo";
+}
+
+<h2>Insertar Moneda Nuevo</h2>
+
+<form id="frmNuevoMoneda" method="post">
+    <div class="form-group">
+        <label>Nombre:</label>
+        <input type="text" id="Nombre" name="Nombre" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Tipo de Cambio:</label>
+        <input type="text" id="Tipo_Cambio" name="Tipo_Cambio" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label>Codigo:</label>
+        <input type="text" name="Codigo" id="Codigo" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Guardar" id="btnAceptar" />
+    </div>
+
+
+    <a href="~/Monedas/TipoMonedaLista">Regresar a la Lista</a>
+
+
+</form>
+
+@Html.ValidationSummary(true)
+@section scripts{
+    <script src="~/Scripts/Validaciones/Monedas.js"></script>
+}
