@@ -10,8 +10,9 @@
 
 <table class="table">
     <tr>
-        <th>Nombre</th>
         <th>Cuenta</th>
+        <th>Nombre</th>
+        <th>Tipo de Cuenta</th>
         <th>Moneda</th>
         <th>Saldo</th>
         <th>Estado</th>
@@ -28,12 +29,12 @@
             <td>@posicionModelo.Saldo</td>
             <td>@posicionModelo.Estado</td>
 
-          @*<td>
-            <a href="~/Monedas/MonedaModifica?Id_Moneda=@posicionModelo.Id_Moneda">Modificar</a>
-            <br />
-            <a href="~/Monedas/MonedaElimina?Id_Moneda=@posicionModelo.Id_Moneda">Eliminar</a>
-        </td>*@          
-        </tr>
+            <td>
+                <a href="~/Cuentas/CuentaModifica?Id_Cuenta=@posicionModelo.Id_Cuenta">Modificar</a>
+                <br />
+                <a href="~/Cuentas/CuentaElimina?Id_Cuenta=@posicionModelo.Id_Cuenta">Eliminar</a>
+        </td>
+</tr>
         }
 
     }

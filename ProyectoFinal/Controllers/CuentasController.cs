@@ -78,7 +78,7 @@ namespace ProyectoFinal.Controllers
             try
             {
                 cantRegistroAfectado = this.modeloBD.sp_InsertaCuentas(
-                    modeloVista.NombreCuenta,
+                    modeloVista.Numero_Cuenta,
                     modeloVista.Id_Cliente,
                     modeloVista.Id_Tipo_Cuenta,
                     modeloVista.Id_Moneda,
@@ -109,8 +109,123 @@ namespace ProyectoFinal.Controllers
             return View();
         }
 
+        public ActionResult CuentaModifica(int Id_Cuenta)
+        {
+            ///Obtener el resgistro que se desea modificar
+            ///utilizando el parámetro del método id_Cuenta
+
+            sp_RetornaCuentas_Result modeloVista = new sp_RetornaCuentas_Result();
+            modeloVista = this.modeloBD.sp_RetornaCuentas(Convert.ToString(Id_Cuenta)).FirstOrDefault();
+            this.AgregarTipoClienteViewBag();
+            this.AgregarTipoCuentaViewBag();
+            this.AgregarTipoMonedaViewBag();
+            ///enviar el modelo a la vista
+            return View(modeloVista);
+        }
+        
+        [HttpPost]
+        public ActionResult CuentaModifica(sp_RetornaCuentas_Result modeloVista)
+        {
+            int cantRegistroAfectado = 0;
+            string resultado = "";
+            decimal SaldoCuenta = 50000;
+            decimal MonedaBd = 0;
 
 
+
+            MonedaBd = this.modeloBD.sp_RetornaMonedas(Convert.ToString(modeloVista.Id_Moneda)).FirstOrDefault().Tipo_Cambio;
+
+            SaldoCuenta = SaldoCuenta / MonedaBd;
+
+            modeloVista.Saldo = SaldoCuenta;
+
+            try
+            {
+                cantRegistroAfectado = this.modeloBD.sp_ModificaCuentas(
+
+                    modeloVista.Id_Cuenta,
+                    modeloVista.Numero_Cuenta,
+                    modeloVista.Id_Cliente,
+                    modeloVista.Id_Tipo_Cuenta,
+                    modeloVista.Id_Moneda,
+                    modeloVista.Saldo,
+                    modeloVista.Estado
+                    );
+            }
+            catch (Exception error)
+            {
+                resultado = "Ocurrió un error: " + error.Message;
+            }
+            finally
+            {
+                if (cantRegistroAfectado > 0)
+                {
+                    resultado = "Registro Modificado";
+                }
+                else
+                {
+                    resultado += "No se pudo Modificar";
+                }
+            }
+
+            Response.Write("<script language=javascript>alert('" + resultado + "')</script>");
+            this.AgregarTipoClienteViewBag();
+            this.AgregarTipoCuentaViewBag();
+            this.AgregarTipoMonedaViewBag();
+            return View(modeloVista);
+        }
+
+
+        public ActionResult CuentaElimina(int Id_Cuenta)
+        {
+            ///Obtener el resgistro que se desea modificar
+            ///utilizando el parámetro del método id_Cuenta
+
+            sp_RetornaCuentas_Result modeloVista = new sp_RetornaCuentas_Result();
+            modeloVista = this.modeloBD.sp_RetornaCuentas(Convert.ToString(Id_Cuenta)).FirstOrDefault();
+            this.AgregarTipoClienteViewBag();
+            this.AgregarTipoCuentaViewBag();
+            this.AgregarTipoMonedaViewBag();
+            ///enviar el modelo a la vista
+            return View(modeloVista);
+        }
+
+        [HttpPost]
+        public ActionResult CuentaElimina(sp_RetornaCuentas_Result modeloVista)
+        {
+            int cantRegistroAfectado = 0;
+            string resultado = "";
+
+            try
+            {
+                cantRegistroAfectado = this.modeloBD.sp_EliminaCuentas(
+
+                    modeloVista.Id_Cuenta
+                    
+                    );
+            }
+            catch (Exception error)
+            {
+                resultado = "Ocurrió un error: " + error.Message;
+            }
+            finally
+            {
+                if (cantRegistroAfectado > 0)
+                {
+                    resultado = "Registro Modificado";
+                }
+                else
+                {
+                    resultado += "No se pudo Modificar";
+                }
+            }
+
+            Response.Write("<script language=javascript>alert('" + resultado + "')</script>");
+            this.AgregarTipoClienteViewBag();
+            this.AgregarTipoCuentaViewBag();
+            this.AgregarTipoMonedaViewBag();
+            return View(modeloVista);
+        }
 
 
 
