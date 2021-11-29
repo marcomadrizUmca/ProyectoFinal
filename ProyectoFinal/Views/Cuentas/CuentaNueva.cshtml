@@ -50,7 +50,7 @@
                 foreach (ProyectoFinal.Models.sp_RetornaMonedas_Result TipoMoneda
                     in this.ViewBag.ListaMoneda)
                 {
-                    <option value="@TipoMoneda.Id_Moneda">@TipoMoneda.Nombre.ToUpper()</option>
+                    <option value="@TipoMoneda.Id_Moneda">@TipoMoneda.Nombre.ToUpper() @TipoMoneda.Tipo_Cambio</option>
                 }
             }
         </select>

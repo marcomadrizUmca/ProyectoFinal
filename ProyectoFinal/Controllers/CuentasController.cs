@@ -65,13 +65,15 @@ namespace ProyectoFinal.Controllers
             int cantRegistroAfectado = 0;
             string resultado =  "";
             decimal SaldoCuenta = 50000;
-            sp_RetornaMonedas_Result MonedaBD = new sp_RetornaMonedas_Result();
+            decimal MonedaBd = 0;
 
-            MonedaBD.Id_Moneda = Convert.ToInt32(MonedaBD.Tipo_Cambio); 
 
-            SaldoCuenta = SaldoCuenta / MonedaBD.Tipo_Cambio;
 
-            SaldoCuenta = modeloVista.Saldo;
+            MonedaBd = this.modeloBD.sp_RetornaMonedas(Convert.ToString(modeloVista.Id_Moneda)).FirstOrDefault().Tipo_Cambio;
+
+            SaldoCuenta = SaldoCuenta / MonedaBd;
+
+            modeloVista.Saldo = SaldoCuenta;
 
             try
             {
