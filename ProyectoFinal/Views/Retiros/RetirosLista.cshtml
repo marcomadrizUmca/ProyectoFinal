@@ -1,0 +1,40 @@
+﻿@model List<ProyectoFinal.Models.sp_RetornaRetiros_Result>
+
+@{
+    ViewBag.Title = "RetirosLista";
+}
+
+<h2>Retiros</h2>
+
+@*<a href="~/Cuentas/CuentaNueva">Agregar una Cuenta Nueva</a>*@
+
+<table class="table">
+    <tr>
+        <th>Cuenta</th>
+        <th>Monto Retiro</th>
+        <th>Fecha</th>
+        <th>Moneda</th>
+
+    </tr>
+    @{
+        foreach (ProyectoFinal.Models.sp_RetornaRetiros_Result posicionModelo in this.Model)
+        {
+            <tr>
+                <td>@posicionModelo.Id_Cuenta</td>
+                <td>@posicionModelo.Monto_Retiro</td>
+                <td>@posicionModelo.Fecha</td>
+                <td>@posicionModelo.Id_Moneda</td>
+
+
+                @*<td>
+                        <a href="~/Cuentas/CuentaModifica?Id_Cuenta=@posicionModelo.Id_Cuenta">Modificar</a>
+                        <br />
+                        <a href="~/Cuentas/CuentaElimina?Id_Cuenta=@posicionModelo.Id_Cuenta">Eliminar</a>
+                    </td>*@
+            </tr>
+        }
+
+    }
+
+
+</table>

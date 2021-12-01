@@ -130,6 +130,7 @@
     <Compile Include="Controllers\CuentasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonedasController.cs" />
+    <Compile Include="Controllers\RetirosController.cs" />
     <Compile Include="Controllers\TipoCuentasController.cs" />
     <Compile Include="Controllers\TiposClientesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -291,6 +292,7 @@
     <Content Include="Views\Cuentas\CuentaNueva.cshtml" />
     <Content Include="Views\Cuentas\CuentaModifica.cshtml" />
     <Content Include="Views\Cuentas\CuentaElimina.cshtml" />
+    <Content Include="Views\Retiros\RetirosLista.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -232,27 +232,6 @@ namespace ProyectoFinal.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaMonedas", nombreParameter, tipo_CambioParameter, codigoParameter);
         }
     
-        public virtual int sp_InsertaRetiros(Nullable<int> id_Cuenta, Nullable<decimal> monto_Retiro, string fecha, Nullable<int> id_Moneda)
-        {
-            var id_CuentaParameter = id_Cuenta.HasValue ?
-                new ObjectParameter("Id_Cuenta", id_Cuenta) :
-                new ObjectParameter("Id_Cuenta", typeof(int));
-    
-            var monto_RetiroParameter = monto_Retiro.HasValue ?
-                new ObjectParameter("Monto_Retiro", monto_Retiro) :
-                new ObjectParameter("Monto_Retiro", typeof(decimal));
-    
-            var fechaParameter = fecha != null ?
-                new ObjectParameter("Fecha", fecha) :
-                new ObjectParameter("Fecha", typeof(string));
-    
-            var id_MonedaParameter = id_Moneda.HasValue ?
-                new ObjectParameter("Id_Moneda", id_Moneda) :
-                new ObjectParameter("Id_Moneda", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaRetiros", id_CuentaParameter, monto_RetiroParameter, fechaParameter, id_MonedaParameter);
-        }
-    
         public virtual int sp_InsertaTipos_Clientes(string nombre, string descripcion)
         {
             var nombreParameter = nombre != null ?
@@ -416,15 +395,6 @@ namespace ProyectoFinal.Models
                 new ObjectParameter("Id_Deposito", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaDepositos_Result>("sp_RetornaDepositos", id_DepositoParameter);
-        }
-    
-        public virtual ObjectResult<sp_RetornaRetiros_Result> sp_RetornaRetiros(Nullable<int> id_Retiro)
-        {
-            var id_RetiroParameter = id_Retiro.HasValue ?
-                new ObjectParameter("Id_Retiro", id_Retiro) :
-                new ObjectParameter("Id_Retiro", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaRetiros_Result>("sp_RetornaRetiros", id_RetiroParameter);
         }
     
         public virtual ObjectResult<sp_RetornaTransferencias_Result> sp_RetornaTransferencias(string id_Transferencia)
@@ -603,6 +573,36 @@ namespace ProyectoFinal.Models
                 new ObjectParameter("Id_Cuenta", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaCuentas_Result>("sp_RetornaCuentas", id_CuentaParameter);
+        }
+    
+        public virtual int sp_InsertaRetiros(Nullable<int> id_Cuenta, Nullable<decimal> monto_Retiro, Nullable<System.DateTime> fecha, Nullable<int> id_Moneda)
+        {
+            var id_CuentaParameter = id_Cuenta.HasValue ?
+                new ObjectParameter("Id_Cuenta", id_Cuenta) :
+                new ObjectParameter("Id_Cuenta", typeof(int));
+    
+            var monto_RetiroParameter = monto_Retiro.HasValue ?
+                new ObjectParameter("Monto_Retiro", monto_Retiro) :
+                new ObjectParameter("Monto_Retiro", typeof(decimal));
+    
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("Fecha", fecha) :
+                new ObjectParameter("Fecha", typeof(System.DateTime));
+    
+            var id_MonedaParameter = id_Moneda.HasValue ?
+                new ObjectParameter("Id_Moneda", id_Moneda) :
+                new ObjectParameter("Id_Moneda", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaRetiros", id_CuentaParameter, monto_RetiroParameter, fechaParameter, id_MonedaParameter);
+        }
+    
+        public virtual ObjectResult<sp_RetornaRetiros_Result> sp_RetornaRetiros(string id_Retiro)
+        {
+            var id_RetiroParameter = id_Retiro != null ?
+                new ObjectParameter("Id_Retiro", id_Retiro) :
+                new ObjectParameter("Id_Retiro", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaRetiros_Result>("sp_RetornaRetiros", id_RetiroParameter);
         }
     }
 }
