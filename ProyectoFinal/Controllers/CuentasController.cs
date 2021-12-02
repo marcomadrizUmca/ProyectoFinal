@@ -228,6 +228,17 @@ namespace ProyectoFinal.Controllers
         }
 
 
+        [HttpPost]
+        public ActionResult RetornaCuentasLista()
+        {
+            List<sp_RetornaCuentas_Result> listaCuentas =
+               this.modeloBD.sp_RetornaCuentas("").ToList();
+            return Json(new
+            {
+                resultado = listaCuentas
+            });
+        }
+
 
 
 

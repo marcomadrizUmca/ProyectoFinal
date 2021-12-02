@@ -18,7 +18,6 @@ namespace ProyectoFinal.Models
         {
             this.Cuentas = new HashSet<Cuentas>();
             this.Depositos = new HashSet<Depositos>();
-            this.Transferencias = new HashSet<Transferencias>();
         }
     
         public int Id_Cliente { get; set; }
@@ -38,6 +37,5 @@ namespace ProyectoFinal.Models
         public virtual Tipos_Clientes Tipos_Clientes { get; set; }
         public virtual ICollection<Cuentas> Cuentas { get; set; }
         public virtual ICollection<Depositos> Depositos { get; set; }
-        public virtual ICollection<Transferencias> Transferencias { get; set; }
     }
 }

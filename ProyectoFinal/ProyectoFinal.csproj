@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ProyectoFinal</RootNamespace>
     <AssemblyName>ProyectoFinal</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -130,89 +130,87 @@
     <Compile Include="Controllers\CuentasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonedasController.cs" />
+    <Compile Include="Controllers\ReporteClientesController.cs" />
     <Compile Include="Controllers\RetirosController.cs" />
     <Compile Include="Controllers\TipoCuentasController.cs" />
     <Compile Include="Controllers\TiposClientesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BancobdModel.Context.cs">
+    <Compile Include="Models\bancoBDModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BancobdModel.Context.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BancobdModel.cs">
+    <Compile Include="Models\bancoBDModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BancobdModel.Designer.cs">
+    <Compile Include="Models\bancoBDModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BancobdModel.edmx</DependentUpon>
+      <DependentUpon>bancoBDModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Clientes.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cuentas.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Depositos.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Monedas.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Retiros.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaClientesId_Result.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaClientes_Result.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaCuentas_Result.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaDepositos_Result.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaMonedas_Result.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaRetiros_Result.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaTipos_Cuentas_Result.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaTipo_Clientes_Result.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_RetornaTransferencias_Result.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tipos_Clientes.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tipos_Cuentas.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Transferencias.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuarios.cs">
-      <DependentUpon>BancobdModel.tt</DependentUpon>
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -225,24 +223,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\BancobdModel.Context.tt">
+    <Content Include="Models\bancoBDModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BancobdModel.Context.cs</LastGenOutput>
-      <DependentUpon>BancobdModel.edmx</DependentUpon>
+      <DependentUpon>bancoBDModel.edmx</DependentUpon>
+      <LastGenOutput>bancoBDModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\BancobdModel.tt">
+    <Content Include="Models\bancoBDModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BancobdModel.edmx</DependentUpon>
-      <LastGenOutput>BancobdModel.cs</LastGenOutput>
+      <DependentUpon>bancoBDModel.edmx</DependentUpon>
+      <LastGenOutput>bancoBDModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\BancobdModel.edmx">
+    <EntityDeploy Include="Models\bancoBDModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BancobdModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>bancoBDModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\BancobdModel.edmx.diagram">
-      <DependentUpon>BancobdModel.edmx</DependentUpon>
+    <Content Include="Models\bancoBDModel.edmx.diagram">
+      <DependentUpon>bancoBDModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -255,6 +253,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ReportesKendo\ReportesKendoUI.js" />
+    <Content Include="Scripts\ScriptGenerico.js" />
     <Content Include="Scripts\ValidacionesGenericas.js" />
     <Content Include="Scripts\Validaciones\ClienteNuevo.js" />
     <Content Include="Scripts\Validaciones\Monedas.js" />
@@ -293,6 +293,7 @@
     <Content Include="Views\Cuentas\CuentaModifica.cshtml" />
     <Content Include="Views\Cuentas\CuentaElimina.cshtml" />
     <Content Include="Views\Retiros\RetirosLista.cshtml" />
+    <Content Include="Views\ReporteClientes\Reportes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

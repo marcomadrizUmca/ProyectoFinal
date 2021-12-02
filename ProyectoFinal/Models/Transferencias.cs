@@ -15,13 +15,12 @@ namespace ProyectoFinal.Models
     public partial class Transferencias
     {
         public int Id_Transferencia { get; set; }
-        public int Id_Cliente { get; set; }
         public int Cuenta_Origen { get; set; }
         public int Cuenta_Destino { get; set; }
         public int Id_Moneda { get; set; }
         public decimal Monto_Transferencia { get; set; }
+        public string Detalle { get; set; }
     
-        public virtual Clientes Clientes { get; set; }
         public virtual Cuentas Cuentas { get; set; }
         public virtual Cuentas Cuentas1 { get; set; }
         public virtual Monedas Monedas { get; set; }

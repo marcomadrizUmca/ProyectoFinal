@@ -165,6 +165,59 @@ namespace ProyectoFinal.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
     
+        public virtual int sp_InsertaClientes(Nullable<int> cedula, string genero, Nullable<System.DateTime> fecha_Nacimiento, string nombre, string primer_Apellido, string segundo_Apellido, string direccion_Fisica, Nullable<int> telefono_Principal, Nullable<int> telefono_Secundario, string correo_Electronico, Nullable<int> tipo_Cliente, string clave_Acceso)
+        {
+            var cedulaParameter = cedula.HasValue ?
+                new ObjectParameter("Cedula", cedula) :
+                new ObjectParameter("Cedula", typeof(int));
+    
+            var generoParameter = genero != null ?
+                new ObjectParameter("Genero", genero) :
+                new ObjectParameter("Genero", typeof(string));
+    
+            var fecha_NacimientoParameter = fecha_Nacimiento.HasValue ?
+                new ObjectParameter("Fecha_Nacimiento", fecha_Nacimiento) :
+                new ObjectParameter("Fecha_Nacimiento", typeof(System.DateTime));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var primer_ApellidoParameter = primer_Apellido != null ?
+                new ObjectParameter("Primer_Apellido", primer_Apellido) :
+                new ObjectParameter("Primer_Apellido", typeof(string));
+    
+            var segundo_ApellidoParameter = segundo_Apellido != null ?
+                new ObjectParameter("Segundo_Apellido", segundo_Apellido) :
+                new ObjectParameter("Segundo_Apellido", typeof(string));
+    
+            var direccion_FisicaParameter = direccion_Fisica != null ?
+                new ObjectParameter("Direccion_Fisica", direccion_Fisica) :
+                new ObjectParameter("Direccion_Fisica", typeof(string));
+    
+            var telefono_PrincipalParameter = telefono_Principal.HasValue ?
+                new ObjectParameter("Telefono_Principal", telefono_Principal) :
+                new ObjectParameter("Telefono_Principal", typeof(int));
+    
+            var telefono_SecundarioParameter = telefono_Secundario.HasValue ?
+                new ObjectParameter("Telefono_Secundario", telefono_Secundario) :
+                new ObjectParameter("Telefono_Secundario", typeof(int));
+    
+            var correo_ElectronicoParameter = correo_Electronico != null ?
+                new ObjectParameter("Correo_Electronico", correo_Electronico) :
+                new ObjectParameter("Correo_Electronico", typeof(string));
+    
+            var tipo_ClienteParameter = tipo_Cliente.HasValue ?
+                new ObjectParameter("Tipo_Cliente", tipo_Cliente) :
+                new ObjectParameter("Tipo_Cliente", typeof(int));
+    
+            var clave_AccesoParameter = clave_Acceso != null ?
+                new ObjectParameter("Clave_Acceso", clave_Acceso) :
+                new ObjectParameter("Clave_Acceso", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaClientes", cedulaParameter, generoParameter, fecha_NacimientoParameter, nombreParameter, primer_ApellidoParameter, segundo_ApellidoParameter, direccion_FisicaParameter, telefono_PrincipalParameter, telefono_SecundarioParameter, correo_ElectronicoParameter, tipo_ClienteParameter, clave_AccesoParameter);
+        }
+    
         public virtual int sp_InsertaCuentas(string numero_Cuenta, Nullable<int> cliente, Nullable<int> tipo_Cuenta, Nullable<int> moneda, Nullable<decimal> saldo, string estado)
         {
             var numero_CuentaParameter = numero_Cuenta != null ?
@@ -232,6 +285,27 @@ namespace ProyectoFinal.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaMonedas", nombreParameter, tipo_CambioParameter, codigoParameter);
         }
     
+        public virtual int sp_InsertaRetiros(Nullable<int> id_Cuenta, Nullable<decimal> monto_Retiro, Nullable<System.DateTime> fecha, Nullable<int> id_Moneda)
+        {
+            var id_CuentaParameter = id_Cuenta.HasValue ?
+                new ObjectParameter("Id_Cuenta", id_Cuenta) :
+                new ObjectParameter("Id_Cuenta", typeof(int));
+    
+            var monto_RetiroParameter = monto_Retiro.HasValue ?
+                new ObjectParameter("Monto_Retiro", monto_Retiro) :
+                new ObjectParameter("Monto_Retiro", typeof(decimal));
+    
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("Fecha", fecha) :
+                new ObjectParameter("Fecha", typeof(System.DateTime));
+    
+            var id_MonedaParameter = id_Moneda.HasValue ?
+                new ObjectParameter("Id_Moneda", id_Moneda) :
+                new ObjectParameter("Id_Moneda", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaRetiros", id_CuentaParameter, monto_RetiroParameter, fechaParameter, id_MonedaParameter);
+        }
+    
         public virtual int sp_InsertaTipos_Clientes(string nombre, string descripcion)
         {
             var nombreParameter = nombre != null ?
@@ -281,6 +355,63 @@ namespace ProyectoFinal.Models
                 new ObjectParameter("Monto_Transferencia", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaTransferencias", id_ClienteParameter, cuenta_OrigenParameter, cuenta_DestinoParameter, id_MonedaParameter, monto_TransferenciaParameter);
+        }
+    
+        public virtual int sp_ModificaClientes(Nullable<int> id_Cliente, Nullable<int> cedula, string genero, Nullable<System.DateTime> fecha_Nacimiento, string nombre, string primer_Apellido, string segundo_Apellido, string direccion_Fisica, Nullable<int> telefono_Principal, Nullable<int> telefono_Secundario, string correo_Electronico, Nullable<int> tipo_Cliente, string clave_Acceso)
+        {
+            var id_ClienteParameter = id_Cliente.HasValue ?
+                new ObjectParameter("id_Cliente", id_Cliente) :
+                new ObjectParameter("id_Cliente", typeof(int));
+    
+            var cedulaParameter = cedula.HasValue ?
+                new ObjectParameter("Cedula", cedula) :
+                new ObjectParameter("Cedula", typeof(int));
+    
+            var generoParameter = genero != null ?
+                new ObjectParameter("Genero", genero) :
+                new ObjectParameter("Genero", typeof(string));
+    
+            var fecha_NacimientoParameter = fecha_Nacimiento.HasValue ?
+                new ObjectParameter("Fecha_Nacimiento", fecha_Nacimiento) :
+                new ObjectParameter("Fecha_Nacimiento", typeof(System.DateTime));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var primer_ApellidoParameter = primer_Apellido != null ?
+                new ObjectParameter("Primer_Apellido", primer_Apellido) :
+                new ObjectParameter("Primer_Apellido", typeof(string));
+    
+            var segundo_ApellidoParameter = segundo_Apellido != null ?
+                new ObjectParameter("Segundo_Apellido", segundo_Apellido) :
+                new ObjectParameter("Segundo_Apellido", typeof(string));
+    
+            var direccion_FisicaParameter = direccion_Fisica != null ?
+                new ObjectParameter("Direccion_Fisica", direccion_Fisica) :
+                new ObjectParameter("Direccion_Fisica", typeof(string));
+    
+            var telefono_PrincipalParameter = telefono_Principal.HasValue ?
+                new ObjectParameter("Telefono_Principal", telefono_Principal) :
+                new ObjectParameter("Telefono_Principal", typeof(int));
+    
+            var telefono_SecundarioParameter = telefono_Secundario.HasValue ?
+                new ObjectParameter("Telefono_Secundario", telefono_Secundario) :
+                new ObjectParameter("Telefono_Secundario", typeof(int));
+    
+            var correo_ElectronicoParameter = correo_Electronico != null ?
+                new ObjectParameter("Correo_Electronico", correo_Electronico) :
+                new ObjectParameter("Correo_Electronico", typeof(string));
+    
+            var tipo_ClienteParameter = tipo_Cliente.HasValue ?
+                new ObjectParameter("Tipo_Cliente", tipo_Cliente) :
+                new ObjectParameter("Tipo_Cliente", typeof(int));
+    
+            var clave_AccesoParameter = clave_Acceso != null ?
+                new ObjectParameter("Clave_Acceso", clave_Acceso) :
+                new ObjectParameter("Clave_Acceso", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ModificaClientes", id_ClienteParameter, cedulaParameter, generoParameter, fecha_NacimientoParameter, nombreParameter, primer_ApellidoParameter, segundo_ApellidoParameter, direccion_FisicaParameter, telefono_PrincipalParameter, telefono_SecundarioParameter, correo_ElectronicoParameter, tipo_ClienteParameter, clave_AccesoParameter);
         }
     
         public virtual int sp_ModificaCuentas(Nullable<int> id_Cuenta, string numero_Cuenta, Nullable<int> cliente, Nullable<int> tipo_Cuenta, Nullable<int> moneda, Nullable<decimal> saldo, string estado)
@@ -388,27 +519,17 @@ namespace ProyectoFinal.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
         }
     
-        public virtual ObjectResult<sp_RetornaDepositos_Result> sp_RetornaDepositos(Nullable<int> id_Deposito)
+        public virtual int sp_Retiro(Nullable<int> cuenta, Nullable<decimal> monto)
         {
-            var id_DepositoParameter = id_Deposito.HasValue ?
-                new ObjectParameter("Id_Deposito", id_Deposito) :
-                new ObjectParameter("Id_Deposito", typeof(int));
+            var cuentaParameter = cuenta.HasValue ?
+                new ObjectParameter("cuenta", cuenta) :
+                new ObjectParameter("cuenta", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaDepositos_Result>("sp_RetornaDepositos", id_DepositoParameter);
-        }
+            var montoParameter = monto.HasValue ?
+                new ObjectParameter("monto", monto) :
+                new ObjectParameter("monto", typeof(decimal));
     
-        public virtual ObjectResult<sp_RetornaTransferencias_Result> sp_RetornaTransferencias(string id_Transferencia)
-        {
-            var id_TransferenciaParameter = id_Transferencia != null ?
-                new ObjectParameter("Id_Transferencia", id_Transferencia) :
-                new ObjectParameter("Id_Transferencia", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaTransferencias_Result>("sp_RetornaTransferencias", id_TransferenciaParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Retiro", cuentaParameter, montoParameter);
         }
     
         public virtual ObjectResult<sp_RetornaClientes_Result> sp_RetornaClientes(string id_Cliente)
@@ -429,6 +550,51 @@ namespace ProyectoFinal.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaClientesId_Result>("sp_RetornaClientesId", id_ClienteParameter);
         }
     
+        public virtual ObjectResult<sp_RetornaCuentas_Result> sp_RetornaCuentas(string id_Cuenta)
+        {
+            var id_CuentaParameter = id_Cuenta != null ?
+                new ObjectParameter("Id_Cuenta", id_Cuenta) :
+                new ObjectParameter("Id_Cuenta", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaCuentas_Result>("sp_RetornaCuentas", id_CuentaParameter);
+        }
+    
+        public virtual ObjectResult<sp_RetornaDepositos_Result> sp_RetornaDepositos(Nullable<int> id_Deposito)
+        {
+            var id_DepositoParameter = id_Deposito.HasValue ?
+                new ObjectParameter("Id_Deposito", id_Deposito) :
+                new ObjectParameter("Id_Deposito", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaDepositos_Result>("sp_RetornaDepositos", id_DepositoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> sp_RetornaFechas(string id_Cuenta)
+        {
+            var id_CuentaParameter = id_Cuenta != null ?
+                new ObjectParameter("Id_Cuenta", id_Cuenta) :
+                new ObjectParameter("Id_Cuenta", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_RetornaFechas", id_CuentaParameter);
+        }
+    
+        public virtual ObjectResult<sp_RetornaMonedas_Result> sp_RetornaMonedas(string id_Moneda)
+        {
+            var id_MonedaParameter = id_Moneda != null ?
+                new ObjectParameter("Id_Moneda", id_Moneda) :
+                new ObjectParameter("Id_Moneda", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaMonedas_Result>("sp_RetornaMonedas", id_MonedaParameter);
+        }
+    
+        public virtual ObjectResult<sp_RetornaRetiros_Result> sp_RetornaRetiros(string id_Retiro)
+        {
+            var id_RetiroParameter = id_Retiro != null ?
+                new ObjectParameter("Id_Retiro", id_Retiro) :
+                new ObjectParameter("Id_Retiro", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaRetiros_Result>("sp_RetornaRetiros", id_RetiroParameter);
+        }
+    
         public virtual ObjectResult<sp_RetornaTipo_Clientes_Result> sp_RetornaTipo_Clientes(string id_Tipo_Cliente)
         {
             var id_Tipo_ClienteParameter = id_Tipo_Cliente != null ?
@@ -447,162 +613,18 @@ namespace ProyectoFinal.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaTipos_Cuentas_Result>("sp_RetornaTipos_Cuentas", id_Tipo_CuentaParameter);
         }
     
-        public virtual ObjectResult<sp_RetornaMonedas_Result> sp_RetornaMonedas(string id_Moneda)
+        public virtual int sp_RetornaTransferencias(string id_Transferencia)
         {
-            var id_MonedaParameter = id_Moneda != null ?
-                new ObjectParameter("Id_Moneda", id_Moneda) :
-                new ObjectParameter("Id_Moneda", typeof(string));
+            var id_TransferenciaParameter = id_Transferencia != null ?
+                new ObjectParameter("Id_Transferencia", id_Transferencia) :
+                new ObjectParameter("Id_Transferencia", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaMonedas_Result>("sp_RetornaMonedas", id_MonedaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_RetornaTransferencias", id_TransferenciaParameter);
         }
     
-        public virtual int sp_InsertaClientes(Nullable<int> cedula, string genero, Nullable<System.DateTime> fecha_Nacimiento, string nombre, string primer_Apellido, string segundo_Apellido, string direccion_Fisica, Nullable<int> telefono_Principal, Nullable<int> telefono_Secundario, string correo_Electronico, Nullable<int> tipo_Cliente, string clave_Acceso)
+        public virtual int sp_upgraddiagrams()
         {
-            var cedulaParameter = cedula.HasValue ?
-                new ObjectParameter("Cedula", cedula) :
-                new ObjectParameter("Cedula", typeof(int));
-    
-            var generoParameter = genero != null ?
-                new ObjectParameter("Genero", genero) :
-                new ObjectParameter("Genero", typeof(string));
-    
-            var fecha_NacimientoParameter = fecha_Nacimiento.HasValue ?
-                new ObjectParameter("Fecha_Nacimiento", fecha_Nacimiento) :
-                new ObjectParameter("Fecha_Nacimiento", typeof(System.DateTime));
-    
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("Nombre", nombre) :
-                new ObjectParameter("Nombre", typeof(string));
-    
-            var primer_ApellidoParameter = primer_Apellido != null ?
-                new ObjectParameter("Primer_Apellido", primer_Apellido) :
-                new ObjectParameter("Primer_Apellido", typeof(string));
-    
-            var segundo_ApellidoParameter = segundo_Apellido != null ?
-                new ObjectParameter("Segundo_Apellido", segundo_Apellido) :
-                new ObjectParameter("Segundo_Apellido", typeof(string));
-    
-            var direccion_FisicaParameter = direccion_Fisica != null ?
-                new ObjectParameter("Direccion_Fisica", direccion_Fisica) :
-                new ObjectParameter("Direccion_Fisica", typeof(string));
-    
-            var telefono_PrincipalParameter = telefono_Principal.HasValue ?
-                new ObjectParameter("Telefono_Principal", telefono_Principal) :
-                new ObjectParameter("Telefono_Principal", typeof(int));
-    
-            var telefono_SecundarioParameter = telefono_Secundario.HasValue ?
-                new ObjectParameter("Telefono_Secundario", telefono_Secundario) :
-                new ObjectParameter("Telefono_Secundario", typeof(int));
-    
-            var correo_ElectronicoParameter = correo_Electronico != null ?
-                new ObjectParameter("Correo_Electronico", correo_Electronico) :
-                new ObjectParameter("Correo_Electronico", typeof(string));
-    
-            var tipo_ClienteParameter = tipo_Cliente.HasValue ?
-                new ObjectParameter("Tipo_Cliente", tipo_Cliente) :
-                new ObjectParameter("Tipo_Cliente", typeof(int));
-    
-            var clave_AccesoParameter = clave_Acceso != null ?
-                new ObjectParameter("Clave_Acceso", clave_Acceso) :
-                new ObjectParameter("Clave_Acceso", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaClientes", cedulaParameter, generoParameter, fecha_NacimientoParameter, nombreParameter, primer_ApellidoParameter, segundo_ApellidoParameter, direccion_FisicaParameter, telefono_PrincipalParameter, telefono_SecundarioParameter, correo_ElectronicoParameter, tipo_ClienteParameter, clave_AccesoParameter);
-        }
-    
-        public virtual int sp_ModificaClientes(Nullable<int> id_Cliente, Nullable<int> cedula, string genero, Nullable<System.DateTime> fecha_Nacimiento, string nombre, string primer_Apellido, string segundo_Apellido, string direccion_Fisica, Nullable<int> telefono_Principal, Nullable<int> telefono_Secundario, string correo_Electronico, Nullable<int> tipo_Cliente, string clave_Acceso)
-        {
-            var id_ClienteParameter = id_Cliente.HasValue ?
-                new ObjectParameter("id_Cliente", id_Cliente) :
-                new ObjectParameter("id_Cliente", typeof(int));
-    
-            var cedulaParameter = cedula.HasValue ?
-                new ObjectParameter("Cedula", cedula) :
-                new ObjectParameter("Cedula", typeof(int));
-    
-            var generoParameter = genero != null ?
-                new ObjectParameter("Genero", genero) :
-                new ObjectParameter("Genero", typeof(string));
-    
-            var fecha_NacimientoParameter = fecha_Nacimiento.HasValue ?
-                new ObjectParameter("Fecha_Nacimiento", fecha_Nacimiento) :
-                new ObjectParameter("Fecha_Nacimiento", typeof(System.DateTime));
-    
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("Nombre", nombre) :
-                new ObjectParameter("Nombre", typeof(string));
-    
-            var primer_ApellidoParameter = primer_Apellido != null ?
-                new ObjectParameter("Primer_Apellido", primer_Apellido) :
-                new ObjectParameter("Primer_Apellido", typeof(string));
-    
-            var segundo_ApellidoParameter = segundo_Apellido != null ?
-                new ObjectParameter("Segundo_Apellido", segundo_Apellido) :
-                new ObjectParameter("Segundo_Apellido", typeof(string));
-    
-            var direccion_FisicaParameter = direccion_Fisica != null ?
-                new ObjectParameter("Direccion_Fisica", direccion_Fisica) :
-                new ObjectParameter("Direccion_Fisica", typeof(string));
-    
-            var telefono_PrincipalParameter = telefono_Principal.HasValue ?
-                new ObjectParameter("Telefono_Principal", telefono_Principal) :
-                new ObjectParameter("Telefono_Principal", typeof(int));
-    
-            var telefono_SecundarioParameter = telefono_Secundario.HasValue ?
-                new ObjectParameter("Telefono_Secundario", telefono_Secundario) :
-                new ObjectParameter("Telefono_Secundario", typeof(int));
-    
-            var correo_ElectronicoParameter = correo_Electronico != null ?
-                new ObjectParameter("Correo_Electronico", correo_Electronico) :
-                new ObjectParameter("Correo_Electronico", typeof(string));
-    
-            var tipo_ClienteParameter = tipo_Cliente.HasValue ?
-                new ObjectParameter("Tipo_Cliente", tipo_Cliente) :
-                new ObjectParameter("Tipo_Cliente", typeof(int));
-    
-            var clave_AccesoParameter = clave_Acceso != null ?
-                new ObjectParameter("Clave_Acceso", clave_Acceso) :
-                new ObjectParameter("Clave_Acceso", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ModificaClientes", id_ClienteParameter, cedulaParameter, generoParameter, fecha_NacimientoParameter, nombreParameter, primer_ApellidoParameter, segundo_ApellidoParameter, direccion_FisicaParameter, telefono_PrincipalParameter, telefono_SecundarioParameter, correo_ElectronicoParameter, tipo_ClienteParameter, clave_AccesoParameter);
-        }
-    
-        public virtual ObjectResult<sp_RetornaCuentas_Result> sp_RetornaCuentas(string id_Cuenta)
-        {
-            var id_CuentaParameter = id_Cuenta != null ?
-                new ObjectParameter("Id_Cuenta", id_Cuenta) :
-                new ObjectParameter("Id_Cuenta", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaCuentas_Result>("sp_RetornaCuentas", id_CuentaParameter);
-        }
-    
-        public virtual int sp_InsertaRetiros(Nullable<int> id_Cuenta, Nullable<decimal> monto_Retiro, Nullable<System.DateTime> fecha, Nullable<int> id_Moneda)
-        {
-            var id_CuentaParameter = id_Cuenta.HasValue ?
-                new ObjectParameter("Id_Cuenta", id_Cuenta) :
-                new ObjectParameter("Id_Cuenta", typeof(int));
-    
-            var monto_RetiroParameter = monto_Retiro.HasValue ?
-                new ObjectParameter("Monto_Retiro", monto_Retiro) :
-                new ObjectParameter("Monto_Retiro", typeof(decimal));
-    
-            var fechaParameter = fecha.HasValue ?
-                new ObjectParameter("Fecha", fecha) :
-                new ObjectParameter("Fecha", typeof(System.DateTime));
-    
-            var id_MonedaParameter = id_Moneda.HasValue ?
-                new ObjectParameter("Id_Moneda", id_Moneda) :
-                new ObjectParameter("Id_Moneda", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaRetiros", id_CuentaParameter, monto_RetiroParameter, fechaParameter, id_MonedaParameter);
-        }
-    
-        public virtual ObjectResult<sp_RetornaRetiros_Result> sp_RetornaRetiros(string id_Retiro)
-        {
-            var id_RetiroParameter = id_Retiro != null ?
-                new ObjectParameter("Id_Retiro", id_Retiro) :
-                new ObjectParameter("Id_Retiro", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaRetiros_Result>("sp_RetornaRetiros", id_RetiroParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     }
 }

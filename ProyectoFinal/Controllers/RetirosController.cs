@@ -28,9 +28,6 @@ namespace ProyectoFinal.Controllers
             ///enviar a la vista el modelo
             return View(modeloVista);
         }
-
-
-
         void AgregarCuentaViewBag()
         {
             this.ViewBag.ListaCuenta = this.modeloBD.sp_RetornaCuentas("").ToList();
@@ -60,55 +57,19 @@ namespace ProyectoFinal.Controllers
         public ActionResult InsertaRetiro(sp_RetornaRetiros_Result modeloVista)
         {
 
-
-
             int cantRegistroAfectado = 0;
             string resultado = "";
-            decimal Retiro = 0;
-            string Mensaje = "";
-            var primero = new DateTime(2021 - 01 - 31);
-            var segundo = new DateTime(2021 - 12 - 31);
-
-
-            //decimal MonedaBd = 0;
-
-
-
-            Retiro = this.modeloBD.sp_RetornaCuentas(Convert.ToString(modeloVista.Id_Cuenta)).FirstOrDefault().Saldo;
-
-            if (modeloVista.Monto_Retiro <= Retiro)
-            {
-                Retiro = modeloVista.Monto_Retiro - Retiro;
-
-
-            }
-            else
-            {
-                Mensaje = "Error";
-
-            }
-
-            if (primero > modeloVista.Fecha && segundo <= modeloVista.Fecha)
-            {
-                if (modeloVista.Monto_Retiro > 2)
-                {
-
-
-                }
-
-            }
-
+            
+          
 
             try
             {
-                cantRegistroAfectado = this.modeloBD.sp_InsertaRetiros(
+                cantRegistroAfectado = this.modeloBD.sp_Retiro(
                     modeloVista.Id_Cuenta,
-                    modeloVista.Monto_Retiro,
-                    modeloVista.Fecha,
-                    modeloVista.Id_Moneda
-
+                    modeloVista.Monto_Retiro
                     );
             }
+
             catch (Exception error)
             {
                 resultado = "Ocurrió un error: " + error.Message;
@@ -130,8 +91,6 @@ namespace ProyectoFinal.Controllers
             this.AgregarSaldoViewBag();
             return View();
         }
-
-
 
     }
 }
