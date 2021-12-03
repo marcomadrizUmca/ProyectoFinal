@@ -586,15 +586,6 @@ namespace ProyectoFinal.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaMonedas_Result>("sp_RetornaMonedas", id_MonedaParameter);
         }
     
-        public virtual ObjectResult<sp_RetornaRetiros_Result> sp_RetornaRetiros(string id_Retiro)
-        {
-            var id_RetiroParameter = id_Retiro != null ?
-                new ObjectParameter("Id_Retiro", id_Retiro) :
-                new ObjectParameter("Id_Retiro", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaRetiros_Result>("sp_RetornaRetiros", id_RetiroParameter);
-        }
-    
         public virtual ObjectResult<sp_RetornaTipo_Clientes_Result> sp_RetornaTipo_Clientes(string id_Tipo_Cliente)
         {
             var id_Tipo_ClienteParameter = id_Tipo_Cliente != null ?
@@ -625,6 +616,15 @@ namespace ProyectoFinal.Models
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<sp_RetornaRetiros_Result> sp_RetornaRetiros(string id_Retiro)
+        {
+            var id_RetiroParameter = id_Retiro != null ?
+                new ObjectParameter("Id_Retiro", id_Retiro) :
+                new ObjectParameter("Id_Retiro", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaRetiros_Result>("sp_RetornaRetiros", id_RetiroParameter);
         }
     }
 }

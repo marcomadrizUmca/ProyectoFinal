@@ -131,6 +131,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonedasController.cs" />
     <Compile Include="Controllers\ReporteClientesController.cs" />
+    <Compile Include="Controllers\ReporteRetirosController.cs" />
     <Compile Include="Controllers\RetirosController.cs" />
     <Compile Include="Controllers\TipoCuentasController.cs" />
     <Compile Include="Controllers\TiposClientesController.cs" />
@@ -253,6 +254,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ReportesKendo\ReporteKendoRetiros.js" />
     <Content Include="Scripts\ReportesKendo\ReportesKendoUI.js" />
     <Content Include="Scripts\ScriptGenerico.js" />
     <Content Include="Scripts\ValidacionesGenericas.js" />
@@ -294,6 +296,8 @@
     <Content Include="Views\Cuentas\CuentaElimina.cshtml" />
     <Content Include="Views\Retiros\RetirosLista.cshtml" />
     <Content Include="Views\ReporteClientes\Reportes.cshtml" />
+    <Content Include="Views\Retiros\InsertaRetiro.cshtml" />
+    <Content Include="Views\ReporteRetiros\ReporteRetiros.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "InsertaRetiro";
+}
+
+<h2>Inserta Retiro</h2>
+
+<form id="frmNuevpRetiro" method="post">
+
+    @*Trae las cuentas*@
+    <div class="form-group">
+        <label>Numero de Cuenta :</label>
+        <select name="Id_Cuenta" id="Id_Cuenta" class="form-control">
+            <option value="">SELECCIONE UNA OPCIÓN</option>
+            @{
+                foreach (ProyectoFinal.Models.sp_RetornaCuentas_Result Cuenta
+                    in this.ViewBag.ListaCuenta)
+                {
+                    <option value="@Cuenta.Id_Cuenta">@Cuenta.Numero_Cuenta.ToUpper()</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Monto de Retiro:</label>
+        <input type="text" name="Monto_Retiro" id="Monto_Retiro" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Guardar" id="btnAceptar" />
+    </div>
+
+    <a href="~/Retiros/RetirosLista">Regresar a la Lista</a>
+
+</form>

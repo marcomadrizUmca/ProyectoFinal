@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="bancobdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="bancobdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Clientes">
           <Key>
             <PropertyRef Name="Id_Cliente" />
@@ -489,8 +489,7 @@
             <End Role="Transferencias" EntitySet="Transferencias" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="bancobdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -844,19 +843,19 @@
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_EliminaCliente">
-            <Parameter Name="Id_Cliente" Mode="In" Type="Int32" />
+          <Parameter Name="Id_Cliente" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_EliminaCuentas">
-            <Parameter Name="Id_Cuenta" Mode="In" Type="Int32" />
+          <Parameter Name="Id_Cuenta" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_EliminaMonedas">
-            <Parameter Name="Id_Moneda" Mode="In" Type="Int32" />
+          <Parameter Name="Id_Moneda" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_EliminaTiposClientes">
-            <Parameter Name="Id_Tipo_Cliente" Mode="In" Type="Int32" />
+          <Parameter Name="Id_Tipo_Cliente" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_EliminaTiposCuentas">
-            <Parameter Name="Id_Tipo_Cuenta" Mode="In" Type="Int32" />
+          <Parameter Name="Id_Tipo_Cuenta" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(bancobdModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -970,36 +969,36 @@
             <Parameter Name="monto" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="sp_RetornaClientes" ReturnType="Collection(bancobdModel.sp_RetornaClientes_Result)">
-            <Parameter Name="Id_Cliente" Mode="In" Type="String" />
+          <Parameter Name="Id_Cliente" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_RetornaClientesId" ReturnType="Collection(bancobdModel.sp_RetornaClientesId_Result)">
-            <Parameter Name="Id_Cliente" Mode="In" Type="Int32" />
+          <Parameter Name="Id_Cliente" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_RetornaCuentas" ReturnType="Collection(bancobdModel.sp_RetornaCuentas_Result)">
-            <Parameter Name="Id_Cuenta" Mode="In" Type="String" />
+          <Parameter Name="Id_Cuenta" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_RetornaDepositos" ReturnType="Collection(bancobdModel.sp_RetornaDepositos_Result)">
-            <Parameter Name="Id_Deposito" Mode="In" Type="Int32" />
+          <Parameter Name="Id_Deposito" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_RetornaFechas" ReturnType="Collection(Int32)">
-            <Parameter Name="Id_Cuenta" Mode="In" Type="String" />
+          <Parameter Name="Id_Cuenta" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_RetornaMonedas" ReturnType="Collection(bancobdModel.sp_RetornaMonedas_Result)">
-            <Parameter Name="Id_Moneda" Mode="In" Type="String" />
+          <Parameter Name="Id_Moneda" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_RetornaTipo_Clientes" ReturnType="Collection(bancobdModel.sp_RetornaTipo_Clientes_Result)">
+          <Parameter Name="Id_Tipo_Cliente" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaTipos_Cuentas" ReturnType="Collection(bancobdModel.sp_RetornaTipos_Cuentas_Result)">
+          <Parameter Name="Id_Tipo_Cuenta" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaTransferencias">
+          <Parameter Name="Id_Transferencia" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
           <FunctionImport Name="sp_RetornaRetiros" ReturnType="Collection(bancobdModel.sp_RetornaRetiros_Result)">
             <Parameter Name="Id_Retiro" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_RetornaTipo_Clientes" ReturnType="Collection(bancobdModel.sp_RetornaTipo_Clientes_Result)">
-            <Parameter Name="Id_Tipo_Cliente" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_RetornaTipos_Cuentas" ReturnType="Collection(bancobdModel.sp_RetornaTipos_Cuentas_Result)">
-            <Parameter Name="Id_Tipo_Cuenta" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_RetornaTransferencias">
-            <Parameter Name="Id_Transferencia" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1069,12 +1068,6 @@
           <Property Type="Decimal" Name="Tipo_Cambio" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="Codigo" Nullable="false" MaxLength="100" />
         </ComplexType>
-        <ComplexType Name="sp_RetornaRetiros_Result">
-          <Property Type="Int32" Name="Id_Cuenta" Nullable="false" />
-          <Property Type="Decimal" Name="Monto_Retiro" Nullable="false" Precision="18" Scale="4" />
-          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
-          <Property Type="Int32" Name="Id_Moneda" Nullable="false" />
-        </ComplexType>
         <ComplexType Name="sp_RetornaTipo_Clientes_Result">
           <Property Type="Int32" Name="Id_Tipo_Cliente" Nullable="false" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
@@ -1084,6 +1077,14 @@
           <Property Type="Int32" Name="Id_Tipo_Cuenta" Nullable="false" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="Codigo" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sp_RetornaRetiros_Result">
+          <Property Type="Int32" Name="Id_Cuenta" Nullable="false" />
+          <Property Type="String" Name="Numero_Cuenta" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="Monto_Retiro" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="Id_Moneda" Nullable="false" />
+          <Property Type="String" Name="NombreMoneda" Nullable="false" MaxLength="100" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1327,16 +1328,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_RetornaRetiros" FunctionName="bancobdModel.Store.sp_RetornaRetiros">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="bancobdModel.sp_RetornaRetiros_Result">
-                <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
-                <ScalarProperty Name="Monto_Retiro" ColumnName="Monto_Retiro" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Id_Moneda" ColumnName="Id_Moneda" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_RetornaTipo_Clientes" FunctionName="bancobdModel.Store.sp_RetornaTipo_Clientes">
             <ResultMapping>
               <ComplexTypeMapping TypeName="bancobdModel.sp_RetornaTipo_Clientes_Result">
@@ -1357,6 +1348,18 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_RetornaTransferencias" FunctionName="bancobdModel.Store.sp_RetornaTransferencias" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="bancobdModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_RetornaRetiros" FunctionName="bancobdModel.Store.sp_RetornaRetiros">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bancobdModel.sp_RetornaRetiros_Result">
+                <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
+                <ScalarProperty Name="Numero_Cuenta" ColumnName="Numero_Cuenta" />
+                <ScalarProperty Name="Monto_Retiro" ColumnName="Monto_Retiro" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Id_Moneda" ColumnName="Id_Moneda" />
+                <ScalarProperty Name="NombreMoneda" ColumnName="NombreMoneda" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -92,5 +92,16 @@ namespace ProyectoFinal.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult RetornaRetirosLista()
+        {
+            List<sp_RetornaRetiros_Result> listaRetiros =
+               this.modeloBD.sp_RetornaRetiros("").ToList();
+            return Json(new
+            {
+                resultado = listaRetiros
+            });
+        }
+
     }
 }

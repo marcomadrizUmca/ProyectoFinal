@@ -14,8 +14,10 @@ namespace ProyectoFinal.Models
     public partial class sp_RetornaRetiros_Result
     {
         public int Id_Cuenta { get; set; }
+        public string Numero_Cuenta { get; set; }
         public decimal Monto_Retiro { get; set; }
         public System.DateTime Fecha { get; set; }
         public int Id_Moneda { get; set; }
+        public string NombreMoneda { get; set; }
     }
 }

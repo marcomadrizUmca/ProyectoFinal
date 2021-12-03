@@ -6,7 +6,7 @@
 
 <h2>Retiros</h2>
 
-@*<a href="~/Cuentas/CuentaNueva">Agregar una Cuenta Nueva</a>*@
+<a href="~/Retiros/InsertaRetiro">Agregar una Cuenta Nueva</a>
 
 <table class="table">
     <tr>
@@ -20,10 +20,10 @@
         foreach (ProyectoFinal.Models.sp_RetornaRetiros_Result posicionModelo in this.Model)
         {
             <tr>
-                <td>@posicionModelo.Id_Cuenta</td>
+                <td>@posicionModelo.Numero_Cuenta</td>
                 <td>@posicionModelo.Monto_Retiro</td>
                 <td>@posicionModelo.Fecha</td>
-                <td>@posicionModelo.Id_Moneda</td>
+                <td>@posicionModelo.NombreMoneda</td>
 
 
                 @*<td>
