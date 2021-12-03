@@ -127,6 +127,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\CorreoController.cs" />
     <Compile Include="Controllers\CuentasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonedasController.cs" />
@@ -156,6 +157,7 @@
     <Compile Include="Models\Clientes.cs">
       <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Correo.cs" />
     <Compile Include="Models\Cuentas.cs">
       <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
@@ -301,6 +303,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Correo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
