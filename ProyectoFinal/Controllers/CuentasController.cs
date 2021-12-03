@@ -238,10 +238,6 @@ namespace ProyectoFinal.Controllers
                 resultado = listaCuentas
             });
         }
-
-
-
-
     }
 
 }
