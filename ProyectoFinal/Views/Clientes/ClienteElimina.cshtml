@@ -4,96 +4,94 @@
     ViewBag.Title = "ClienteElimina";
 }
 
-<h2>Eliminar Cliente</h2>
+<link href="~/Content/CSS/CSSEliminar.css" rel="stylesheet" />
+<div id="Centrar">
+    <h2>Eliminar Cliente</h2>
 
-<form id="frmEliminarCliente" method="post">
-    <div class="form-group">
-        <label>Cedula:</label>
-        <input type="text" name="Cedula" id="Cedula" class="form-control" value="@Model.Cedula" readonly />
-    </div>
-    <br />
+        <form id="frmEliminarCliente" method="post">
+            <div class="form-group">
+                <label>Cedula:</label>
+                <input type="text" name="Cedula" id="Cedula" class="form-control" value="@Model.Cedula" readonly />
+            </div>
 
+            <di class="form-group">
+                <label>Fecha de Nacimiento:</label>
+                <input type="text" name="Fecha_Nacimiento" id="Fecha_Nacimiento" class="form-control" value="@Model.Fecha_Nacimiento" readonly />
+            </di>
 
-    <div class="form-group">
-        <label>Fecha de Nacimiento:</label>
-        <input type="text" name="Fecha_Nacimiento" id="Fecha_Nacimiento" class="form-control" value="@Model.Fecha_Nacimiento" readonly/>
-    </div>
+            <div class="form-group">
+                <label>Nombre:</label>
+                <input type="text" name="nombre" id="nombre" class="form-control" value="@Model.Nombre" readonly />
+            </div>
 
-    <div class="form-group">
-        <label>Nombre:</label>
-        <input type="text" name="nombre" id="nombre" class="form-control" value="@Model.Nombre" readonly/>
-    </div>
+            <div class="form-group">
+                <label>Primero Apellido:</label>
+                <input type="text" name="Primer_Apellido" id="Primer_Apellido" class="form-control" value="@Model.Primer_Apellido" readonly />
+            </div>
 
-    <div class="form-group">
-        <label>Primero Apellido:</label>
-        <input type="text" name="Primer_Apellido" id="Primer_Apellido" class="form-control" value="@Model.Primer_Apellido" readonly/>
-    </div>
+            <div class="form-group">
+                <label>Segundo Apellido:</label>
+                <input type="text" name="Segundo_Apellido" id="Segundo_Apellido" class="form-control" value="@Model.Segundo_Apellido" readonly />
+            </div>
 
-    <div class="form-group">
-        <label>Segundo Apellido:</label>
-        <input type="text" name="Segundo_Apellido" id="Segundo_Apellido" class="form-control" value="@Model.Segundo_Apellido" readonly/>
-    </div>
+            <div class="form-group">
+                <label>Dirección Fisica:</label>
+                <input type="text" name="Direccion_Fisica" id="Direccion_Fisica" class="form-control" value="@Model.Direccion_Fisica" readonly />
+            </div>
 
-    <div class="form-group">
-        <label>Dirección Fisica:</label>
-        <input type="text" name="Direccion_Fisica" id="Direccion_Fisica" class="form-control" value="@Model.Direccion_Fisica" readonly/>
-    </div>
+            <div class="form-group">
+                <label>Telefono Principal:</label>
+                <input type="text" name="Telefono_Principal" id="Telefono_Principal" class="form-control" value="@Model.Telefono_Principal" readonly />
+            </div>
 
-    <div class="form-group">
-        <label>Telefono Principal:</label>
-        <input type="text" name="Telefono_Principal" id="Telefono_Principal" class="form-control" value="@Model.Telefono_Principal" readonly/>
-    </div>
+            <div class="form-group">
+                <label>Telefono Secundario:</label>
+                <input type="text" name="Telefono_Secundario" id="Telefono_Secundario" class="form-control" value="@Model.Telefono_Secundario" readonly />
+            </div>
 
-    <div class="form-group">
-        <label>Telefono Secundario:</label>
-        <input type="text" name="Telefono_Secundario" id="Telefono_Secundario" class="form-control" value="@Model.Telefono_Secundario" readonly/>
-    </div>
+            <div class="form-group">
+                <label>Correo electrónico</label>
+                <input type="text" name="Correo_Electronico" id="Correo_Electronico" class="form-control" value="@Model.Correo_Electronico" readonly />
+            </div>
 
-    <div class="form-group">
-        <label>Correo electrónico</label>
-        <input type="text" name="Correo_Electronico" id="Correo_Electronico" class="form-control" value="@Model.Correo_Electronico" readonly/>
-    </div>
+            <div class="form-group">
+                <label>Tipo de Cliente :</label>
+                <select name="Tipo_Cliente" id="Tipo_Cliente" class="form-control" readonly>
+                    <option value="">SELECCIONE UNA OPCIÓN</option>
+                    @{
+                        foreach (ProyectoFinal.Models.sp_RetornaTipo_Clientes_Result tipoCliente in this.ViewBag.ListaTipoCliente)
+                        {
+                            bool esIdTipoCliente = tipoCliente.Id_Tipo_Cliente == Model.Tipo_Cliente;
+                            @*
+                                Incluir la propiedad selected para que la opción aparazca seleccionada. Se compara la propiedad
+                                id_Provincia del objeto del viewBag contra la propiedad id_Provincia del modelo de la vista
+                            *@
+                            if (esIdTipoCliente)
+                            {
+                                <option value="@tipoCliente.Id_Tipo_Cliente" selected>@tipoCliente.Nombre.ToUpper()  </option>
+                            }
+                            else
+                            {
+                                <option value="@tipoCliente.Id_Tipo_Cliente">@tipoCliente.Nombre.ToUpper() </option>
+                            }
 
-    <div class="form-group">
-        <label>Tipo de Cliente :</label>
-        <select name="Tipo_Cliente" id="Tipo_Cliente" class="form-control" readonly>
-            <option value="">SELECCIONE UNA OPCIÓN</option>
-            @{
-                foreach (ProyectoFinal.Models.sp_RetornaTipo_Clientes_Result tipoCliente in this.ViewBag.ListaTipoCliente)
-                {
-                    bool esIdTipoCliente = tipoCliente.Id_Tipo_Cliente == Model.Tipo_Cliente;
-                    @*
-                        Incluir la propiedad selected para que la opción aparazca seleccionada. Se compara la propiedad
-                        id_Provincia del objeto del viewBag contra la propiedad id_Provincia del modelo de la vista
-                    *@
-                    if (esIdTipoCliente)
-                    {
-                        <option value="@tipoCliente.Id_Tipo_Cliente" selected>@tipoCliente.Nombre.ToUpper()  </option>
+                        }
+
                     }
-                    else
-                    {
-                        <option value="@tipoCliente.Id_Tipo_Cliente">@tipoCliente.Nombre.ToUpper() </option>
-                    }
+                </select>
+            </div>
 
-                }
+            <div class="form-group">
+                <label>Clave:</label>
+                <input type="text" name="Clave_Acceso" id="Clave_Acceso" class="form-control" value="@Model.Clave_Acceso" readonly />
+            </div>
 
-            }
-        </select>
-    </div>
-
-    <div class="form-group">
-        <label>Clave:</label>
-        <input type="text" name="Clave_Acceso" id="Clave_Acceso" class="form-control" value="@Model.Clave_Acceso" readonly/>
-    </div>
-
-    <div class="form-group">
-        <input type="submit" value="Guardar" id="btnAceptar" />
-    </div>
-
-    <a href="~/Clientes/ClienteLista">Regresar a la Lista</a>
-
-</form>
-
+            <div class="form-group">
+                <input class="boton_personalizado" type="submit" value="Eliminar" id="tnAceptar" />
+                <a class="boton_personalizado" href="~/Clientes/ClienteLista">Regresar a la Lista</a>
+            </div> 
+        </form>
+</div>
 @section scripts{
     <script src="~/Scripts/Validaciones/ClienteNuevo.js"></script>
 }

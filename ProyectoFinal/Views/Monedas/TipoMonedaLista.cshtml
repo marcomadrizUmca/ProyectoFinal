@@ -4,16 +4,19 @@
     ViewBag.Title = "TipoMonedaLista";
 }
 
-<h2>Tipo Moneda Lista</h2>
+<link href="~/Content/CSS/CSS.css" rel="stylesheet" />
 
-<a href="~/Monedas/MonedaNuevo">Agregar un Tipo de Cliente</a>
 
-<table class="table">
+<h2 style="opacity:0.6">Tipo Moneda Lista</h2>
+
+
+
+<table class="table" style="opacity:0.5">
     <tr>
-        <th>Nombre</th>
-        <th>Tipo de Cambio</th>
-        <th>Codigo</th>
-        <th>Acciones</th>
+        <th id="Encabezado">Nombre</th>
+        <th id="Encabezado">Tipo de Cambio</th>
+        <th id="Encabezado">Codigo</th>
+        <th id="Encabezado">Acciones</th>
     </tr>
     @{
         foreach (ProyectoFinal.Models.sp_RetornaMonedas_Result  posicionModelo in this.Model)
@@ -37,3 +40,4 @@
 
 
 </table>
+<ul><li><a id="Enlace" href="~/Monedas/MonedaNuevo" style="opacity:0.6">Agregar un Tipo de Cliente</a></li></ul>

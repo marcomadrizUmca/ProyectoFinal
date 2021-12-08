@@ -109,6 +109,13 @@ namespace ProyectoFinal.Controllers
             return View();
         }
 
+
+
+
+
+
+
+
         public ActionResult CuentaModifica(int Id_Cuenta)
         {
             ///Obtener el resgistro que se desea modificar

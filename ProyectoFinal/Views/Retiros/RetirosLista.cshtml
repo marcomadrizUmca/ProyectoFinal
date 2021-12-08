@@ -4,16 +4,17 @@
     ViewBag.Title = "RetirosLista";
 }
 
-<h2>Retiros</h2>
+<link href="~/Content/CSS/CSS.css" rel="stylesheet" />
 
-<a href="~/Retiros/InsertaRetiro">Agregar una Cuenta Nueva</a>
+<h2 style="opacity:0.6">Retiros</h2>
 
-<table class="table">
+
+<table class="table" style="opacity:0.5">
     <tr>
-        <th>Cuenta</th>
-        <th>Monto Retiro</th>
-        <th>Fecha</th>
-        <th>Moneda</th>
+        <th id="Encabezado">Cuenta</th>
+        <th id="Encabezado">Monto Retiro</th>
+        <th id="Encabezado">Fecha</th>
+        <th id="Encabezado">Moneda</th>
 
     </tr>
     @{
@@ -38,3 +39,5 @@
 
 
 </table>
+
+<ul><li><a id="Enlace"  href="~/Retiros/InsertaRetiro" style="opacity:0.6">Agregar una Cuenta Nueva</a></li></ul>
