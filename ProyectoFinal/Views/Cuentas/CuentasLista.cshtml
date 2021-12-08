@@ -4,19 +4,21 @@
     ViewBag.Title = "CuentasLista";
 }
 
-<h2>Lista de Cuentas</h2>
+<link href="~/Content/CSS/CSS.css" rel="stylesheet" />
 
-<a href="~/Cuentas/CuentaNueva">Agregar una Cuenta Nueva</a>
+<h2 style="opacity:0.6">Lista de Cuentas</h2>
 
-<table class="table">
+
+
+<table class="table" style="opacity:0.5">
     <tr>
-        <th>Cuenta</th>
-        <th>Nombre</th>
-        <th>Tipo de Cuenta</th>
-        <th>Moneda</th>
-        <th>Saldo</th>
-        <th>Estado</th>
-        <th>Acciones</th>
+        <th id="Encabezado">Cuenta</th>
+        <th id="Encabezado">Nombre</th>
+        <th id="Encabezado">Tipo de Cuenta</th>
+        <th id="Encabezado">Moneda</th>
+        <th id="Encabezado">Saldo</th>
+        <th id="Encabezado">Estado</th>
+        <th id="Encabezado">Acciones</th>
     </tr>
     @{
         foreach (ProyectoFinal.Models.sp_RetornaCuentas_Result posicionModelo in this.Model)
@@ -41,3 +43,5 @@
 
 
 </table>
+
+<ul><li><a id="Enlace" href="~/Cuentas/CuentaNueva" style="opacity:0.6">Agregar una Cuenta Nueva</a></li></ul>

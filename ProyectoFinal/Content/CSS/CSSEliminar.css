@@ -1,0 +1,26 @@
+﻿.boton_personalizado {
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 300;
+    font-size: 15px;
+    color: #000000;
+    background-color: #e4dad1;
+    border-radius: 6px;
+    border: 2px solid #fbc376;
+}
+
+.boton_personalizado:hover {
+    color: #ffd800;
+    background-color: #ffffff;
+}
+
+#Centrar {
+    width: 400px;
+    margin: 0 auto;
+    border: 1px solid #ff6a00;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    padding: 10px;
+    background: linear-gradient(#ffffff, #EEE7B6);
+}
+
