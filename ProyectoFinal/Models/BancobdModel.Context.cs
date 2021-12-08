@@ -31,13 +31,14 @@ namespace ProyectoFinal.Models
         public DbSet<Clientes> Clientes { get; set; }
         public DbSet<Cuentas> Cuentas { get; set; }
         public DbSet<Depositos> Depositos { get; set; }
+        public DbSet<InicioSesion> InicioSesion { get; set; }
         public DbSet<Monedas> Monedas { get; set; }
         public DbSet<Retiros> Retiros { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<Tipos_Clientes> Tipos_Clientes { get; set; }
         public DbSet<Tipos_Cuentas> Tipos_Cuentas { get; set; }
+        public DbSet<TipoUsuario> TipoUsuario { get; set; }
         public DbSet<Transferencias> Transferencias { get; set; }
-        public DbSet<Usuarios> Usuarios { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -58,6 +59,19 @@ namespace ProyectoFinal.Models
                 new ObjectParameter("definition", typeof(byte[]));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual ObjectResult<sp_AutenticarUsuario_Result> sp_AutenticarUsuario(string usuario, string clave)
+        {
+            var usuarioParameter = usuario != null ?
+                new ObjectParameter("Usuario", usuario) :
+                new ObjectParameter("Usuario", typeof(string));
+    
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_AutenticarUsuario_Result>("sp_AutenticarUsuario", usuarioParameter, claveParameter);
         }
     
         public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
@@ -577,6 +591,15 @@ namespace ProyectoFinal.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_RetornaFechas", id_CuentaParameter);
         }
     
+        public virtual ObjectResult<sp_RetornaInicioSesion_Result> sp_RetornaInicioSesion(string id_InicioSesion)
+        {
+            var id_InicioSesionParameter = id_InicioSesion != null ?
+                new ObjectParameter("Id_InicioSesion", id_InicioSesion) :
+                new ObjectParameter("Id_InicioSesion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaInicioSesion_Result>("sp_RetornaInicioSesion", id_InicioSesionParameter);
+        }
+    
         public virtual ObjectResult<sp_RetornaMonedas_Result> sp_RetornaMonedas(string id_Moneda)
         {
             var id_MonedaParameter = id_Moneda != null ?
@@ -584,6 +607,15 @@ namespace ProyectoFinal.Models
                 new ObjectParameter("Id_Moneda", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaMonedas_Result>("sp_RetornaMonedas", id_MonedaParameter);
+        }
+    
+        public virtual ObjectResult<sp_RetornaRetiros_Result> sp_RetornaRetiros(string id_Retiro)
+        {
+            var id_RetiroParameter = id_Retiro != null ?
+                new ObjectParameter("Id_Retiro", id_Retiro) :
+                new ObjectParameter("Id_Retiro", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaRetiros_Result>("sp_RetornaRetiros", id_RetiroParameter);
         }
     
         public virtual ObjectResult<sp_RetornaTipo_Clientes_Result> sp_RetornaTipo_Clientes(string id_Tipo_Cliente)
@@ -616,15 +648,6 @@ namespace ProyectoFinal.Models
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
-        }
-    
-        public virtual ObjectResult<sp_RetornaRetiros_Result> sp_RetornaRetiros(string id_Retiro)
-        {
-            var id_RetiroParameter = id_Retiro != null ?
-                new ObjectParameter("Id_Retiro", id_Retiro) :
-                new ObjectParameter("Id_Retiro", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaRetiros_Result>("sp_RetornaRetiros", id_RetiroParameter);
         }
     }
 }

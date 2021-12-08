@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="bancobdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="bancobdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Clientes">
           <Key>
             <PropertyRef Name="Id_Cliente" />
@@ -423,6 +423,9 @@
         <Function Name="sp_RetornaDepositos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id_Deposito" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_RetornaFechas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Cuenta" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="sp_RetornaInicioSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id_InicioSesion" Type="varchar" Mode="In" />
         </Function>
@@ -503,7 +506,8 @@
             <End Role="Transferencias" EntitySet="Transferencias" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="bancobdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -560,6 +564,18 @@
           <NavigationProperty Name="Cuentas" Relationship="Self.FK_Depositos_Cuentas1" FromRole="Depositos" ToRole="Cuentas" />
           <NavigationProperty Name="Monedas" Relationship="Self.FK_Depositos_Monedas" FromRole="Depositos" ToRole="Monedas" />
         </EntityType>
+        <EntityType Name="InicioSesion">
+          <Key>
+            <PropertyRef Name="Id_InicioSesion" />
+          </Key>
+          <Property Name="Id_InicioSesion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="clave" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ultimoIngreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Id_tipoUsuario" Type="Int32" Nullable="false" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
         <EntityType Name="Monedas">
           <Key>
             <PropertyRef Name="Id_Moneda" />
@@ -612,6 +628,13 @@
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Codigo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Cuentas" Relationship="Self.FK_Cuentas_Tipos_Cuentas" FromRole="Tipos_Cuentas" ToRole="Cuentas" />
+        </EntityType>
+        <EntityType Name="TipoUsuario">
+          <Key>
+            <PropertyRef Name="Id_TipoUsuario" />
+          </Key>
+          <Property Name="Id_TipoUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Transferencias">
           <Key>
@@ -775,11 +798,13 @@
           <EntitySet Name="Clientes" EntityType="Self.Clientes" />
           <EntitySet Name="Cuentas" EntityType="Self.Cuentas" />
           <EntitySet Name="Depositos" EntityType="Self.Depositos" />
+          <EntitySet Name="InicioSesion" EntityType="Self.InicioSesion" />
           <EntitySet Name="Monedas" EntityType="Self.Monedas" />
           <EntitySet Name="Retiros" EntityType="Self.Retiros" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tipos_Clientes" EntityType="Self.Tipos_Clientes" />
           <EntitySet Name="Tipos_Cuentas" EntityType="Self.Tipos_Cuentas" />
+          <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" />
           <EntitySet Name="Transferencias" EntityType="Self.Transferencias" />
           <AssociationSet Name="FK_Clientes_Tipos_Clientes" Association="Self.FK_Clientes_Tipos_Clientes">
             <End Role="Tipos_Clientes" EntitySet="Tipos_Clientes" />
@@ -835,6 +860,10 @@
             <Parameter Name="version" Mode="In" Type="Int32" />
             <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
+          <FunctionImport Name="sp_AutenticarUsuario" ReturnType="Collection(bancobdModel.sp_AutenticarUsuario_Result)">
+            <Parameter Name="Usuario" Mode="In" Type="String" />
+            <Parameter Name="Clave" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="sp_creatediagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -846,19 +875,19 @@
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_EliminaCliente">
-          <Parameter Name="Id_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Cliente" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_EliminaCuentas">
-          <Parameter Name="Id_Cuenta" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Cuenta" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_EliminaMonedas">
-          <Parameter Name="Id_Moneda" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Moneda" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_EliminaTiposClientes">
-          <Parameter Name="Id_Tipo_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Tipo_Cliente" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_EliminaTiposCuentas">
-          <Parameter Name="Id_Tipo_Cuenta" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Tipo_Cuenta" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(bancobdModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -972,43 +1001,48 @@
             <Parameter Name="monto" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="sp_RetornaClientes" ReturnType="Collection(bancobdModel.sp_RetornaClientes_Result)">
-          <Parameter Name="Id_Cliente" Mode="In" Type="String" />
+            <Parameter Name="Id_Cliente" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_RetornaClientesId" ReturnType="Collection(bancobdModel.sp_RetornaClientesId_Result)">
-          <Parameter Name="Id_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Cliente" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_RetornaCuentas" ReturnType="Collection(bancobdModel.sp_RetornaCuentas_Result)">
-          <Parameter Name="Id_Cuenta" Mode="In" Type="String" />
+            <Parameter Name="Id_Cuenta" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_RetornaDepositos" ReturnType="Collection(bancobdModel.sp_RetornaDepositos_Result)">
-          <Parameter Name="Id_Deposito" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Deposito" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_RetornaMonedas" ReturnType="Collection(bancobdModel.sp_RetornaMonedas_Result)">
-          <Parameter Name="Id_Moneda" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_RetornaTipo_Clientes" ReturnType="Collection(bancobdModel.sp_RetornaTipo_Clientes_Result)">
-          <Parameter Name="Id_Tipo_Cliente" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_RetornaTipos_Cuentas" ReturnType="Collection(bancobdModel.sp_RetornaTipos_Cuentas_Result)">
-          <Parameter Name="Id_Tipo_Cuenta" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_RetornaTransferencias">
-          <Parameter Name="Id_Transferencia" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="sp_RetornaRetiros" ReturnType="Collection(bancobdModel.sp_RetornaRetiros_Result)">
-          <Parameter Name="Id_Retiro" Mode="In" Type="String" />
-          </FunctionImport>
-          <EntitySet Name="InicioSesion" EntityType="bancobdModel.InicioSesion" />
-          <EntitySet Name="TipoUsuario" EntityType="bancobdModel.TipoUsuario" />
-          <FunctionImport Name="sp_AutenticarUsuario" ReturnType="Collection(bancobdModel.sp_AutenticarUsuario_Result)">
-            <Parameter Name="Usuario" Mode="In" Type="String" />
-            <Parameter Name="Clave" Mode="In" Type="String" />
+          <FunctionImport Name="sp_RetornaFechas" ReturnType="Collection(Int32)">
+            <Parameter Name="Id_Cuenta" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_RetornaInicioSesion" ReturnType="Collection(bancobdModel.sp_RetornaInicioSesion_Result)">
             <Parameter Name="Id_InicioSesion" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_RetornaMonedas" ReturnType="Collection(bancobdModel.sp_RetornaMonedas_Result)">
+            <Parameter Name="Id_Moneda" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaRetiros" ReturnType="Collection(bancobdModel.sp_RetornaRetiros_Result)">
+            <Parameter Name="Id_Retiro" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaTipo_Clientes" ReturnType="Collection(bancobdModel.sp_RetornaTipo_Clientes_Result)">
+            <Parameter Name="Id_Tipo_Cliente" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaTipos_Cuentas" ReturnType="Collection(bancobdModel.sp_RetornaTipos_Cuentas_Result)">
+            <Parameter Name="Id_Tipo_Cuenta" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaTransferencias">
+            <Parameter Name="Id_Transferencia" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
+        <ComplexType Name="sp_AutenticarUsuario_Result">
+          <Property Type="String" Name="usuario" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="clave" Nullable="false" MaxLength="4" />
+          <Property Type="DateTime" Name="ultimoIngreso" Nullable="false" Precision="23" />
+          <Property Type="String" Name="nombrecompleto" Nullable="false" MaxLength="302" />
+          <Property Type="Int32" Name="tipoUsuario" Nullable="false" />
+          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+        </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -1071,20 +1105,19 @@
           <Property Type="Int32" Name="Id_Moneda" Nullable="false" />
           <Property Type="Int32" Name="Id_Cliente" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="sp_RetornaInicioSesion_Result">
+          <Property Type="Int32" Name="Id_InicioSesion" Nullable="false" />
+          <Property Type="String" Name="usuario" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="clave" Nullable="false" MaxLength="4" />
+          <Property Type="DateTime" Name="ultimoIngreso" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="Id_tipoUsuario" Nullable="false" />
+          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="50" />
+        </ComplexType>
         <ComplexType Name="sp_RetornaMonedas_Result">
           <Property Type="Int32" Name="Id_Moneda" Nullable="false" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
           <Property Type="Decimal" Name="Tipo_Cambio" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="100" />
-        </ComplexType>
-        <ComplexType Name="sp_RetornaTipo_Clientes_Result">
-          <Property Type="Int32" Name="Id_Tipo_Cliente" Nullable="false" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
-        </ComplexType>
-        <ComplexType Name="sp_RetornaTipos_Cuentas_Result">
-          <Property Type="Int32" Name="Id_Tipo_Cuenta" Nullable="false" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="Codigo" Nullable="false" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="sp_RetornaRetiros_Result">
@@ -1095,41 +1128,15 @@
           <Property Type="Int32" Name="Id_Moneda" Nullable="false" />
           <Property Type="String" Name="NombreMoneda" Nullable="false" MaxLength="100" />
         </ComplexType>
-        <EntityType Name="InicioSesion">
-          <Key>
-            <PropertyRef Name="Id_InicioSesion" />
-          </Key>
-          <Property Name="Id_InicioSesion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="clave" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="ultimoIngreso" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Id_tipoUsuario" Type="Int32" Nullable="false" />
-          <Property Name="IdCliente" Type="Int32" Nullable="false" />
-          <Property Name="NombreCompleto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="TipoUsuario">
-          <Key>
-            <PropertyRef Name="Id_TipoUsuario" />
-          </Key>
-          <Property Name="Id_TipoUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <ComplexType Name="sp_AutenticarUsuario_Result">
-          <Property Type="String" Name="usuario" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="clave" Nullable="false" MaxLength="4" />
-          <Property Type="DateTime" Name="ultimoIngreso" Nullable="false" Precision="23" />
-          <Property Type="String" Name="nombrecompleto" Nullable="false" MaxLength="302" />
-          <Property Type="Int32" Name="tipoUsuario" Nullable="false" />
-          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+        <ComplexType Name="sp_RetornaTipo_Clientes_Result">
+          <Property Type="Int32" Name="Id_Tipo_Cliente" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
         </ComplexType>
-        <ComplexType Name="sp_RetornaInicioSesion_Result">
-          <Property Type="Int32" Name="Id_InicioSesion" Nullable="false" />
-          <Property Type="String" Name="usuario" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="clave" Nullable="false" MaxLength="4" />
-          <Property Type="DateTime" Name="ultimoIngreso" Nullable="false" Precision="23" />
-          <Property Type="Int32" Name="Id_tipoUsuario" Nullable="false" />
-          <Property Type="Int32" Name="IdCliente" Nullable="false" />
-          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="50" />
+        <ComplexType Name="sp_RetornaTipos_Cuentas_Result">
+          <Property Type="Int32" Name="Id_Tipo_Cuenta" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="100" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1177,6 +1184,19 @@
                 <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
                 <ScalarProperty Name="Id_Moneda" ColumnName="Id_Moneda" />
                 <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InicioSesion">
+            <EntityTypeMapping TypeName="bancobdModel.InicioSesion">
+              <MappingFragment StoreEntitySet="InicioSesion">
+                <ScalarProperty Name="Id_InicioSesion" ColumnName="Id_InicioSesion" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="ultimoIngreso" ColumnName="ultimoIngreso" />
+                <ScalarProperty Name="Id_tipoUsuario" ColumnName="Id_tipoUsuario" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1230,6 +1250,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TipoUsuario">
+            <EntityTypeMapping TypeName="bancobdModel.TipoUsuario">
+              <MappingFragment StoreEntitySet="TipoUsuario">
+                <ScalarProperty Name="Id_TipoUsuario" ColumnName="Id_TipoUsuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Transferencias">
             <EntityTypeMapping TypeName="bancobdModel.Transferencias">
               <MappingFragment StoreEntitySet="Transferencias">
@@ -1243,6 +1271,18 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="bancobdModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_AutenticarUsuario" FunctionName="bancobdModel.Store.sp_AutenticarUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bancobdModel.sp_AutenticarUsuario_Result">
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="ultimoIngreso" ColumnName="ultimoIngreso" />
+                <ScalarProperty Name="nombrecompleto" ColumnName="nombrecompleto" />
+                <ScalarProperty Name="tipoUsuario" ColumnName="tipoUsuario" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="bancobdModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="bancobdModel.Store.sp_dropdiagram" />
           <FunctionImportMapping FunctionImportName="sp_EliminaCliente" FunctionName="bancobdModel.Store.sp_EliminaCliente" />
@@ -1351,6 +1391,20 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RetornaFechas" FunctionName="bancobdModel.Store.sp_RetornaFechas" />
+          <FunctionImportMapping FunctionImportName="sp_RetornaInicioSesion" FunctionName="bancobdModel.Store.sp_RetornaInicioSesion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bancobdModel.sp_RetornaInicioSesion_Result">
+                <ScalarProperty Name="Id_InicioSesion" ColumnName="Id_InicioSesion" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="ultimoIngreso" ColumnName="ultimoIngreso" />
+                <ScalarProperty Name="Id_tipoUsuario" ColumnName="Id_tipoUsuario" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_RetornaMonedas" FunctionName="bancobdModel.Store.sp_RetornaMonedas">
             <ResultMapping>
               <ComplexTypeMapping TypeName="bancobdModel.sp_RetornaMonedas_Result">
@@ -1358,6 +1412,18 @@
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Tipo_Cambio" ColumnName="Tipo_Cambio" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RetornaRetiros" FunctionName="bancobdModel.Store.sp_RetornaRetiros">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bancobdModel.sp_RetornaRetiros_Result">
+                <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
+                <ScalarProperty Name="Numero_Cuenta" ColumnName="Numero_Cuenta" />
+                <ScalarProperty Name="Monto_Retiro" ColumnName="Monto_Retiro" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Id_Moneda" ColumnName="Id_Moneda" />
+                <ScalarProperty Name="NombreMoneda" ColumnName="NombreMoneda" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1381,64 +1447,6 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_RetornaTransferencias" FunctionName="bancobdModel.Store.sp_RetornaTransferencias" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="bancobdModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="sp_RetornaRetiros" FunctionName="bancobdModel.Store.sp_RetornaRetiros">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="bancobdModel.sp_RetornaRetiros_Result">
-                <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
-                <ScalarProperty Name="Numero_Cuenta" ColumnName="Numero_Cuenta" />
-                <ScalarProperty Name="Monto_Retiro" ColumnName="Monto_Retiro" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Id_Moneda" ColumnName="Id_Moneda" />
-                <ScalarProperty Name="NombreMoneda" ColumnName="NombreMoneda" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <EntitySetMapping Name="InicioSesion">
-            <EntityTypeMapping TypeName="bancobdModel.InicioSesion">
-              <MappingFragment StoreEntitySet="InicioSesion">
-                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
-                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
-                <ScalarProperty Name="Id_tipoUsuario" ColumnName="Id_tipoUsuario" />
-                <ScalarProperty Name="ultimoIngreso" ColumnName="ultimoIngreso" />
-                <ScalarProperty Name="clave" ColumnName="clave" />
-                <ScalarProperty Name="usuario" ColumnName="usuario" />
-                <ScalarProperty Name="Id_InicioSesion" ColumnName="Id_InicioSesion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TipoUsuario">
-            <EntityTypeMapping TypeName="bancobdModel.TipoUsuario">
-              <MappingFragment StoreEntitySet="TipoUsuario">
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="Id_TipoUsuario" ColumnName="Id_TipoUsuario" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_AutenticarUsuario" FunctionName="bancobdModel.Store.sp_AutenticarUsuario">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="bancobdModel.sp_AutenticarUsuario_Result">
-                <ScalarProperty Name="usuario" ColumnName="usuario" />
-                <ScalarProperty Name="clave" ColumnName="clave" />
-                <ScalarProperty Name="ultimoIngreso" ColumnName="ultimoIngreso" />
-                <ScalarProperty Name="nombrecompleto" ColumnName="nombrecompleto" />
-                <ScalarProperty Name="tipoUsuario" ColumnName="tipoUsuario" />
-                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_RetornaInicioSesion" FunctionName="bancobdModel.Store.sp_RetornaInicioSesion">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="bancobdModel.sp_RetornaInicioSesion_Result">
-                <ScalarProperty Name="Id_InicioSesion" ColumnName="Id_InicioSesion" />
-                <ScalarProperty Name="usuario" ColumnName="usuario" />
-                <ScalarProperty Name="clave" ColumnName="clave" />
-                <ScalarProperty Name="ultimoIngreso" ColumnName="ultimoIngreso" />
-                <ScalarProperty Name="Id_tipoUsuario" ColumnName="Id_tipoUsuario" />
-                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
-                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -165,10 +165,16 @@
     <Compile Include="Models\Depositos.cs">
       <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\InicioSesion.cs">
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Monedas.cs">
       <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Retiros.cs">
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_AutenticarUsuario_Result.cs">
       <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
@@ -187,6 +193,9 @@
       <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaDepositos_Result.cs">
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_RetornaInicioSesion_Result.cs">
       <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaMonedas_Result.cs">
@@ -210,10 +219,10 @@
     <Compile Include="Models\Tipos_Cuentas.cs">
       <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Transferencias.cs">
+    <Compile Include="Models\TipoUsuario.cs">
       <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Usuarios.cs">
+    <Compile Include="Models\Transferencias.cs">
       <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

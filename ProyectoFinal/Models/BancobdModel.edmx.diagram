@@ -4,15 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="475c449989fe412a8d66418bd9c939b3" Name="Diagram1">
+      <Diagram DiagramId="acaffa56b3d244bba2717dd410cdc9d1" Name="Diagram1">
         <EntityTypeShape EntityType="bancobdModel.Clientes" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="bancobdModel.Cuentas" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="bancobdModel.Depositos" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bancobdModel.InicioSesion" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="bancobdModel.Monedas" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="bancobdModel.Retiros" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="bancobdModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="bancobdModel.sysdiagrams" Width="1.5" PointX="3.75" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="bancobdModel.Tipos_Clientes" Width="1.5" PointX="1.5" PointY="10.375" IsExpanded="true" />
         <EntityTypeShape EntityType="bancobdModel.Tipos_Cuentas" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bancobdModel.TipoUsuario" Width="1.5" PointX="5.75" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="bancobdModel.Transferencias" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
         <AssociationConnector Association="bancobdModel.FK_Clientes_Tipos_Clientes" ManuallyRouted="false" />
         <AssociationConnector Association="bancobdModel.FK_Cuentas_Clientes" ManuallyRouted="false" />
@@ -26,8 +28,6 @@
         <AssociationConnector Association="bancobdModel.FK_Depositos_Monedas" ManuallyRouted="false" />
         <AssociationConnector Association="bancobdModel.FK_Retiros_Monedas" ManuallyRouted="false" />
         <AssociationConnector Association="bancobdModel.FK_Transferencias_Monedas1" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="bancobdModel.InicioSesion" Width="1.5" PointX="5.375" PointY="9.75" />
-        <EntityTypeShape EntityType="bancobdModel.TipoUsuario" Width="1.5" PointX="7.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
