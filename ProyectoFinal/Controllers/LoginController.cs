@@ -19,7 +19,7 @@ namespace ProyectoFinal.Controllers
 
 
         [HttpPost]
-        public ActionResult Autenticar(sp_RetornaInicioSesion_Result)
+        public ActionResult Autenticar(sp_RetornaInicioSesion_Result modeloVista)
         {
             return View("Autenticar");
         }
