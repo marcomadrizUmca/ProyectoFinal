@@ -130,6 +130,7 @@
     <Compile Include="Controllers\CorreoController.cs" />
     <Compile Include="Controllers\CuentasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MonedasController.cs" />
     <Compile Include="Controllers\ReporteClientesController.cs" />
     <Compile Include="Controllers\ReporteRetirosController.cs" />
@@ -304,6 +305,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Correo\" />
+    <Folder Include="Views\InicioSesion\" />
+    <Folder Include="Views\Login\" />
+    <Folder Include="Views\Validar\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
