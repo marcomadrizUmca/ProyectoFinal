@@ -229,6 +229,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Audio\videoplayback.m4a" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -241,6 +242,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagenes\banco del pueblo.PNG" />
+    <Content Include="Imagenes\Banco1.png" />
+    <Content Include="Imagenes\Banco2.jpg" />
+    <Content Include="Imagenes\Banco4.jpg" />
+    <Content Include="Imagenes\Banco5.jpg" />
     <Content Include="Models\bancoBDModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>bancoBDModel.edmx</DependentUpon>
@@ -297,6 +303,7 @@
     <Content Include="Scripts\ValidacionesGenericas.js" />
     <Content Include="Scripts\Validaciones\ClienteNuevo.js" />
     <Content Include="Scripts\Validaciones\Monedas.js" />
+    <Content Include="Video\Banco del Pueblo Soberano - Organizando las fuerzas productivas.mp4" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
