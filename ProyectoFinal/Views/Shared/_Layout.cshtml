@@ -1,4 +1,28 @@
-﻿<!DOCTYPE html>
+﻿@using ProyectoFinal.Models;
+
+@{
+    //Variable que posee los datos de la sesión del usuario
+    sp_AutenticarUsuario_Result modelo = (sp_AutenticarUsuario_Result)this.Session["datosUsuario"];
+
+    //Variable con la dirección de la vista de login
+    string urlLogin = this.Url.Action("Index", "Login");
+
+    //Varialble con la dirección de la vista de cierre se Sesión
+    string urlCierreSesion = this.Url.Action("CerrarSesion", "Login");
+
+    //Variable para consultar si la sesión fue iniciada
+    bool sesionIniciada = false;
+
+    ///Consultar si el key "logueado" de la sesión
+    ///posee un valor
+    if (this.Session["logueado"] != null)
+    {
+        sesionIniciada = Convert.ToBoolean(this.Session["logueado"]);
+    }
+
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -8,6 +32,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("css", required: false)
+   <link href="~/Scripts/jquery-ui-1.13.0.custom/jquery-ui-1.13.0.custom/jquery-ui.css" rel="stylesheet" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -22,9 +47,27 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Inicio", "Bienvenida", "Inicio")</li>
+                    @{
+                        if (sesionIniciada == true)
+                        {
+                            if (modelo.tipoUsuario == 1)
+                            {
+                                <li>@Html.ActionLink("Monedas", "TipoMonedaLista", "Monedas")</li>
+                                <li>@Html.ActionLink("Tipos de Clientes", "TipoClienteLista", "TiposClientes")</li>
+                                <li>@Html.ActionLink("Clientes", "ClienteLista", "Clientes")</li>
+                                <li>@Html.ActionLink("Tipo de Cuentas", "TipoCuentasLista", "TipoCuentas")</li>
+                                <li>@Html.ActionLink("Cuentas", "CuentasLista", "Cuentas")</li>
+                            }
+                            else if (modelo.tipoUsuario == 2)
+                            {
+                                <li>@Html.ActionLink("Retiros", "RetirosLista", "Retiros")</li>
+                            }
+                            <li><a id="lnkCerrarSesion" hfef="#">Cerrar Sesión</a></li>
+                        }
+                    }
+
+
                 </ul>
             </div>
         </div>
@@ -32,8 +75,27 @@
     <br />
     <br />
     <div class="container body-content">
-        @RenderBody()
+       @{
+            ///Si es verdadero cargar el cuerpo de la página hija
+            if (sesionIniciada == true)
+            {
+               @RenderBody();
+            }
+            else
+            {
+               ///De lo contrario redireccionar al controlador de loguin y a su método Index 
+               ///para que solicite los datos de inicio de sesión
+               this.Response.Redirect(urlLogin);
+            }
+       }
+
+
         <hr />
+        <div id="divCerrarSesion" hidden>
+            <p>¿Desea cerrar la sesión?</p>
+            <button id="btnSi">Sí</button>
+            <button id="btnNo">No</button>
+        </div>
         <footer>
             <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
         </footer>
@@ -41,7 +103,41 @@
 
     @Scripts.Render("~/bundles/bundleJquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery-ui-1.13.0.custom/jquery-ui-1.13.0.custom/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            crearEvento();
+        });
 
+        function crearEvento() {
+            $("#divCerrarSesion").dialog({
+                autoOpen: false,
+                height: 150,
+                width: 200,
+                modal: true,
+                title: 'Cerrar Sesión',
+                resizable: false
+            });
+            ///Evento click del link lnkCerrarSesion
+            $("#lnkCerrarSesion").click(function () {
+                $("#divCerrarSesion").dialog("open");
+            });
+
+            ///Evento click del botón btnNo
+            $("#btnNo").click(function () {
+                $("#divCerrarSesion").dialog("close");
+            });
+
+            ///Evento click del botón btnSi
+            $("#btnSi").click(function () {
+                window.location.href = '@urlCierreSesion';
+            });
+
+
+
+        }
+    </script>
+
+    @RenderSection("scripts", required: false)
 </body>
 </html>

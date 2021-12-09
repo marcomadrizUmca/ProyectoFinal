@@ -1,0 +1,60 @@
+﻿@{
+    Layout = null;
+    /// Construir la URl del método del controlador
+    string urlMetodoFormulario = Url.Action("VerificaLogin", "Login");
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/CSS/Inicio.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    @*
+        Crear el fomulario e indicarle al action y el método
+            action=variable crada en la línea
+            method= debe ser post ya que el get nos retonaría la vista
+    *@
+
+    <form class="login" action="@urlMetodoFormulario" method="post">
+
+        <fieldset>
+            <legend class="legend">Inicio de Session</legend>
+
+            <div class="input">
+                <label class="title" for="usuario">Usuario</label>
+                <input type="number" class="form-control" id="usuario" name="usuario" placeholder="Ingrese el Usuario" required />
+                <span><i class="fa fa-envelope-o"></i></span>
+            </div>
+
+            <div class="input">
+                <label for="clave">Contraseña</label>
+                <input type="password" class="form-control" id="clave" name="clave" placeholder="Ingrese Contraseña" required />
+                <span><i class="fa fa-lock"></i></span>
+            </div>
+
+            <button type="submit" class="submit"><i class="fa fa-long-arrow-right"></i></button>
+        </fieldset>
+
+        <div class="feedback">
+            login successful <br />
+            redirecting...
+        </div>
+        @*
+        Mostrar los mensajes que enviamos desde el controlador. Por ejemplo (ver controlador):
+            this.ModelState.AddModelError("", "Usuario o contraseña inválidos. Por favor Verifique");
+        *@
+        @Html.ValidationSummary(true)
+    </form>
+    <script src="~/Scripts/JS/Prueba.js"></script>
+    @Scripts.Render("~/bundles/bundleJquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
+
+

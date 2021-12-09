@@ -130,6 +130,7 @@
     <Compile Include="Controllers\CorreoController.cs" />
     <Compile Include="Controllers\CuentasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InicioController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MonedasController.cs" />
     <Compile Include="Controllers\ReporteClientesController.cs" />
@@ -234,6 +235,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CSS\CSS.css" />
     <Content Include="Content\CSS\CSSEliminar.css" />
+    <Content Include="Content\CSS\Inicio.css" />
+    <Content Include="Content\Imagenes\moroccan-flower.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -262,11 +265,31 @@
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\package.json" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\AUTHORS.txt" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\external\jquery\jquery.js" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\images\ui-icons_444444_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\images\ui-icons_555555_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\images\ui-icons_777620_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\images\ui-icons_777777_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\index.html" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\jquery-ui.css" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\jquery-ui.min.css" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\jquery-ui.structure.css" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\jquery-ui.structure.min.css" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\jquery-ui.theme.css" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\jquery-ui.theme.min.css" />
+    <Content Include="Scripts\jquery-ui-1.13.0.custom\jquery-ui-1.13.0.custom\LICENSE.txt" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\JS\Prueba.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\ReportesKendo\ReporteKendoRetiros.js" />
     <Content Include="Scripts\ReportesKendo\ReportesKendoUI.js" />
@@ -312,12 +335,12 @@
     <Content Include="Views\ReporteClientes\Reportes.cshtml" />
     <Content Include="Views\Retiros\InsertaRetiro.cshtml" />
     <Content Include="Views\ReporteRetiros\ReporteRetiros.cshtml" />
+    <Content Include="Views\Inicio\Bienvenida.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Correo\" />
-    <Folder Include="Views\InicioSesion\" />
-    <Folder Include="Views\Login\" />
     <Folder Include="Views\Validar\" />
   </ItemGroup>
   <ItemGroup>

@@ -28,6 +28,7 @@ namespace ProyectoFinal.Controllers
             ///enviar a la vista el modelo
             return View(modeloVista);
         }
+
         void AgregarCuentaViewBag()
         {
             this.ViewBag.ListaCuenta = this.modeloBD.sp_RetornaCuentas("").ToList();
