@@ -1,0 +1,40 @@
+﻿@model List<ProyectoFinal.Models.sp_RetornaDepositos_Result>
+@{
+    ViewBag.Title = "DepositoLista";
+}
+
+
+
+<link href="~/Content/CSS/CSS.css" rel="stylesheet" />
+
+<h2 style="opacity:0.6">Lista de Depositos</h2>
+
+
+<table class="table table-hover table-striped" style="opacity:0.5">
+    <tr>
+        <th id="Encabezado">Monto del Deposito</th>
+        <th id="Encabezado">Cuenta</th>
+        <th id="Encabezado">Moneda</th>
+
+    </tr>
+    @{
+        foreach (ProyectoFinal.Models.sp_RetornaDepositos_Result posicionModelo in this.Model)
+        {
+            <tr>
+                <td>@posicionModelo.Monto_Deposito</td>
+                <td>@posicionModelo.Numero_Cuenta</td>
+                <td>@posicionModelo.Nombre</td>
+                @*<td>
+                        <a href="~/Cuentas/CuentaModifica?Id_Cuenta=@posicionModelo.Id_Cuenta">Modificar</a>
+                        <br />
+                        <a href="~/Cuentas/CuentaElimina?Id_Cuenta=@posicionModelo.Id_Cuenta">Eliminar</a>
+                    </td>*@
+            </tr>
+        }
+
+    }
+
+
+</table>
+
+<ul><li><a id="Enlace" href="~/Depositos/DepositoNuevo" style="opacity:0.6">Agregar Nuevo Deposito</a></li></ul>

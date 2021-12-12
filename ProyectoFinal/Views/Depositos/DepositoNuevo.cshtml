@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "DepositoNuevo";
+}
+
+<link href="~/Content/CSS/CSSEliminar.css" rel="stylesheet" />
+<div id="Centrar">
+
+    <h2 style="opacity: 0.6">Deposito Nuevo</h2>
+
+    <form id="frmNuevoDeposito" method="post">
+
+        @*Trae las cuentas*@
+        <div class="form-group">
+            <label>Numero de Cuenta :</label>
+            <select name="Id_Cuenta" id="Id_Cuenta" class="form-control">
+                <option value="">SELECCIONE UNA OPCIÓN</option>
+                @{
+                    foreach (ProyectoFinal.Models.sp_RetornaCuentas_Result Cuenta
+                        in this.ViewBag.ListaCuentas)
+                    {
+                        <option value="@Cuenta.Id_Cuenta">@Cuenta.Numero_Cuenta.ToUpper()</option>
+                    }
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Moneda :</label>
+            <select name="Id_Moneda" id="Id_Moneda" class="form-control">
+                <option value="">SELECCIONE UNA OPCIÓN</option>
+                @{
+                    foreach (ProyectoFinal.Models.sp_RetornaMonedas_Result Moneda
+                        in this.ViewBag.ListaMoneda)
+                    {
+                        <option value="@Moneda.Id_Moneda">@Moneda.Nombre.ToUpper()</option>
+                    }
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Deposito:</label>
+            <input type="text" name="Monto_Deposito" id="Monto_Deposito" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <input class="boton_personalizado" type="submit" value="Guardar" id="btnAceptar" />
+            <a class="boton_personalizado" href="~/Depositos/DepositoLista">Regresar a la Lista</a>
+        </div>
+    </form>
+</div>
+

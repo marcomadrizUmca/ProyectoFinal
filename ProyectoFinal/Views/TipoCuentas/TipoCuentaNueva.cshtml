@@ -3,31 +3,32 @@
     ViewBag.Title = "TipoCuentaNueva";
 }
 
-<h2>Tipo de Cuenta Nueva</h2>
+<link href="~/Content/CSS/CSSEliminar.css" rel="stylesheet" />
+<div id="Centrar">
 
-<form id="frmNuevoTipoCuenta" method="post">
-    <div class="form-group">
-        <label>Nombre:</label>
-        <input type="text" id="Nombre" name="Nombre" class="form-control" />
-    </div>
+    <h2 style="opacity: 0.6">Ingresar una Cuenta Nueva</h2>
 
-
-    <div class="form-group">
-        <label>Codigo:</label>
-        <input type="text" name="Codigo" id="Codigo" class="form-control" />
-    </div>
-
-    <div class="form-group">
-        <input type="submit" value="Guardar" id="btnAceptar" />
-    </div>
+    <form id="frmNuevoTipoCuenta" method="post">
+        <div class="form-group">
+            <label>Nombre:</label>
+            <input type="text" id="Nombre" name="Nombre" class="form-control" />
+        </div>
 
 
-    <a href="~/TipoCuentas/TipoCuentasLista">Regresar a la Lista</a>
+        <div class="form-group">
+            <label>Codigo:</label>
+            <input type="text" name="Codigo" id="Codigo" class="form-control" />
+        </div>
 
+        <div class="form-group">
+            <input class="boton_personalizado" type="submit" value="Guardar" id="btnAceptar" />
+            <a class="boton_personalizado" href="~/TipoCuentas/TipoCuentasLista">Regresar a la Lista</a>
+        </div>
 
-</form>
+    </form>
+</div> 
 
-@Html.ValidationSummary(true)
-@section scripts{
-    <script src="~/Scripts/Validaciones/ClienteNuevo.js"></script>
-}
+    @Html.ValidationSummary(true)
+    @section scripts{
+        <script src="~/Scripts/Validaciones/ClienteNuevo.js"></script>
+    }

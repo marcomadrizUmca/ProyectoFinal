@@ -1,14 +1,14 @@
 ﻿$(function () {
-    obtenerRegistrosRetiros();
+    obtenerRegistrosDepositos();
 });
 
 
 /// funcion que obtiene los registros
 // del metodo del controlador
 // RetornaCuentasLista()
-function obtenerRegistrosRetiros() {
+function obtenerRegistrosDepositos() {
     /////construir la dirección del método del servidor
-    var urlMetodo = '/Retiros/RetornaRetirosLista'
+    var urlMetodo = '/Depositos/RetornaDepositosLista'
     var parametros = {};
     var funcion = creaGridKendo;
     ///ejecuta la función $.ajax utilizando un método genérico
@@ -31,33 +31,29 @@ function creaGridKendo(data) {
             ///Cada columna se agrega por llaves
             {
                 ///Propiedad de la fuente de datos a mostras
-                field: 'Numero_Cuenta',
+                field: 'Monto_Deposito',
                 ///texto del encabezado
+                title: 'Monto del Deposito'
+            },
+            {
+                field: 'Numero_Cuenta',
                 title: 'Numero de Cuenta'
             },
             {
-                field: 'NombreMoneda',
+                field: 'Nombre',
                 title: 'Tipo de Moneda'
             },
-            {
-                field: 'Fecha',
-                title: 'Fecha del Retiro'
-            },
-            {
-                field: 'Monto_Retiro',
-                title: 'Monto Retirado'
-            },
-  
+
         ],
         filterable: true,
         toolbar: ["excel", "pdf"],
         excel: {
-            fileName: "Lista de Retiros.xlsx",
+            fileName: "Lista de Depositos.xlsx",
             filterable: true,
             allPages: true,
         },
         pdf: {
-            fileName: "Lista de Retiros.pdf",
+            fileName: "Lista de Depositos.pdf",
             author: "UMCA",
             creator: "Marco Madriz Herrera",
             date: new Date(),

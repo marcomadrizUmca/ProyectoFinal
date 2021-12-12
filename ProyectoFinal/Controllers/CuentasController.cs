@@ -67,13 +67,19 @@ namespace ProyectoFinal.Controllers
             decimal SaldoCuenta = 50000;
             decimal MonedaBd = 0;
 
-
-
             MonedaBd = this.modeloBD.sp_RetornaMonedas(Convert.ToString(modeloVista.Id_Moneda)).FirstOrDefault().Tipo_Cambio;
 
             SaldoCuenta = SaldoCuenta / MonedaBd;
 
             modeloVista.Saldo = SaldoCuenta;
+
+            if (Session["datosUsuario"] != null)
+            {
+                sp_AutenticarUsuario_Result modelo = (sp_AutenticarUsuario_Result)this.Session["datosUsuario"];
+
+
+                ViewBag.ListaCuenta = this.modeloBD.sp_RetornaCuentasUsuario(modelo.IdCliente).ToList();
+            }
 
             try
             {
@@ -102,19 +108,19 @@ namespace ProyectoFinal.Controllers
                 }
             }
 
+            //if(cantRegistroAfectado > 0)
+            //{
+            //    resultado = "<p>Su deposito de" + modeloVista.Cedula + "fue genial" + modeloVista.NombreCliente;
+                
+            //}
+
+
             Response.Write("<script language=javascript>alert('" + resultado + "')</script>");
             this.AgregarTipoClienteViewBag();
             this.AgregarTipoCuentaViewBag();
             this.AgregarTipoMonedaViewBag();
             return View();
         }
-
-
-
-
-
-
-
 
         public ActionResult CuentaModifica(int Id_Cuenta)
         {
@@ -181,7 +187,6 @@ namespace ProyectoFinal.Controllers
             this.AgregarTipoMonedaViewBag();
             return View(modeloVista);
         }
-
 
         public ActionResult CuentaElimina(int Id_Cuenta)
         {

@@ -11,12 +11,14 @@ namespace ProyectoFinal.Models
 {
     using System;
     
-    public partial class sp_RetornaDepositos_Result
+    public partial class sp_RetornaCuentasUsuario_Result
     {
-        public decimal Monto_Deposito { get; set; }
         public int Id_Cuenta { get; set; }
         public string Numero_Cuenta { get; set; }
-        public int Id_Moneda { get; set; }
-        public string Nombre { get; set; }
+        public int Cliente { get; set; }
+        public int Tipo_Cuenta { get; set; }
+        public int Moneda { get; set; }
+        public decimal Saldo { get; set; }
+        public string Estado { get; set; }
     }
 }

@@ -3,34 +3,36 @@
     ViewBag.Title = "InsertaRetiro";
 }
 
-<h2>Inserta Retiro</h2>
+<link href="~/Content/CSS/CSSEliminar.css" rel="stylesheet" />
+<div id="Centrar">
 
-<form id="frmNuevpRetiro" method="post">
+    <h2 style="opacity: 0.6">Inserta Retiro</h2>
 
-    @*Trae las cuentas*@
-    <div class="form-group">
-        <label>Numero de Cuenta :</label>
-        <select name="Id_Cuenta" id="Id_Cuenta" class="form-control">
-            <option value="">SELECCIONE UNA OPCIÓN</option>
-            @{
-                foreach (ProyectoFinal.Models.sp_RetornaCuentas_Result Cuenta
-                    in this.ViewBag.ListaCuenta)
-                {
-                    <option value="@Cuenta.Id_Cuenta">@Cuenta.Numero_Cuenta.ToUpper()</option>
+    <form id="frmNuevpRetiro" method="post">
+
+        @*Trae las cuentas*@
+        <div class="form-group">
+            <label>Numero de Cuenta :</label>
+            <select name="Id_Cuenta" id="Id_Cuenta" class="form-control">
+                <option value="">SELECCIONE UNA OPCIÓN</option>
+                @{
+                    foreach (ProyectoFinal.Models.sp_RetornaCuentas_Result Cuenta
+                        in this.ViewBag.ListaCuenta)
+                    {
+                        <option value="@Cuenta.Id_Cuenta">@Cuenta.Numero_Cuenta.ToUpper()</option>
+                    }
                 }
-            }
-        </select>
-    </div>
+            </select>
+        </div>
 
-    <div class="form-group">
-        <label>Monto de Retiro:</label>
-        <input type="text" name="Monto_Retiro" id="Monto_Retiro" class="form-control" />
-    </div>
+        <div class="form-group">
+            <label>Monto de Retiro:</label>
+            <input type="text" name="Monto_Retiro" id="Monto_Retiro" class="form-control" />
+        </div>
 
-    <div class="form-group">
-        <input type="submit" value="Guardar" id="btnAceptar" />
-    </div>
-
-    <a href="~/Retiros/RetirosLista">Regresar a la Lista</a>
-
-</form>
+        <div class="form-group">
+            <input class="boton_personalizado" type="submit" value="Guardar" id="btnAceptar" />
+            <a class="boton_personalizado" href="~/Retiros/RetirosLista">Regresar a la Lista</a>
+        </div>
+    </form>
+</div>

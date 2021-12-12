@@ -1,12 +1,12 @@
 ﻿$(function () {
-    obtenerRegistrosRetiros();
+    obtenerRegistrosCuentas();
 });
 
 
 /// funcion que obtiene los registros
 // del metodo del controlador
-// RetornaCuentasLista()
-function obtenerRegistrosRetiros() {
+// RetornaRetirosLista()
+function obtenerRegistrosCuentas() {
     /////construir la dirección del método del servidor
     var urlMetodo = '/Retiros/RetornaRetirosLista'
     var parametros = {};
@@ -17,7 +17,7 @@ function obtenerRegistrosRetiros() {
 }
 ///encargada de crear el grid de kendo y mostrar
 //los datos obtenidos al llamar al método
-// RetornaCuentasClientes
+// RetornaRetirosLista
 function creaGridKendo(data) {
     $("#divKendoGrid").kendoGrid({
         ///Asignar la fuente de datos al objeto
@@ -47,7 +47,7 @@ function creaGridKendo(data) {
                 field: 'Monto_Retiro',
                 title: 'Monto Retirado'
             },
-  
+
         ],
         filterable: true,
         toolbar: ["excel", "pdf"],

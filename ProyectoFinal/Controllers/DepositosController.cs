@@ -7,31 +7,33 @@ using ProyectoFinal.Models;
 
 namespace ProyectoFinal.Controllers
 {
-    public class RetirosController : Controller
+    public class DepositosController : Controller
     {
         // Modelo de la base de datos
         bancobdEntities modeloBD = new bancobdEntities();
-        // GET: Retiros
+        // GET: Depositos
         public ActionResult Index()
         {
             return View();
         }
-
-        public ActionResult RetirosLista()
+        public ActionResult DepositoLista()
 
         {
             ///Crear variable que contiene los registros obtenidos 
-            ///al invocar al procedimiento almancenado sp_RetornaRetiros
-            List<sp_RetornaRetiros_Result> modeloVista = new List<sp_RetornaRetiros_Result>();
+            ///al invocar al procedimiento almancenado sp_RetornaClientes
+            List<sp_RetornaDepositos_Result> modeloVista = new List<sp_RetornaDepositos_Result>();
             ///Asignar a la variable el resultado de "llamar" al procedimiento almanceado
-            modeloVista = this.modeloBD.sp_RetornaRetiros("").ToList();
+            modeloVista = this.modeloBD.sp_RetornaDepositos(null).ToList();
             ///enviar a la vista el modelo
             return View(modeloVista);
         }
 
-        void AgregarCuentaViewBag()
+        /// <summary>
+        /// Agregar el tipo de clientes al viewbag, para que sean accedidas desde la vista, y es case sensitive
+        /// </summary>
+        void AgregarCuentasViewBag()
         {
-            this.ViewBag.ListaCuenta = this.modeloBD.sp_RetornaCuentas("").ToList();
+            this.ViewBag.ListaCuentas = this.modeloBD.sp_RetornaCuentas("").ToList();
         }
 
         void AgregarTipoMonedaViewBag()
@@ -39,42 +41,27 @@ namespace ProyectoFinal.Controllers
             this.ViewBag.ListaMoneda = this.modeloBD.sp_RetornaMonedas("").ToList();
         }
 
-        void AgregarSaldoViewBag()
+        public ActionResult DepositoNuevo()
         {
-            this.ViewBag.MuestraSaldo = this.modeloBD.sp_RetornaCuentas("").ToList();
-        }
-        public ActionResult InsertaRetiro()
-        {
-
-            this.AgregarCuentaViewBag();
-            this.AgregarSaldoViewBag();
+            this.AgregarCuentasViewBag();
             this.AgregarTipoMonedaViewBag();
             return View();
         }
 
         [HttpPost]
-
-        public ActionResult InsertaRetiro(sp_RetornaRetiros_Result modeloVista)
+        public ActionResult DepositoNuevo(sp_RetornaDepositos_Result modeloVista)
         {
-
             int cantRegistroAfectado = 0;
             string resultado = "";
 
-            //if (Session["datosUsuario"] != null)
-            //{
-            //    sp_AutenticarUsuario_Result modelo = (sp_AutenticarUsuario_Result)this.Session["datosUsuario"];
-
-            //    this.ViewBag.CuentasViewBag = this.modeloBD.sp_RetornaCuentasUsuario(modelo.IdCliente).ToList();
-            //}
-
             try
             {
-                cantRegistroAfectado = this.modeloBD.sp_Retiro(
+                cantRegistroAfectado = this.modeloBD.sp_Depositos(
+                    modeloVista.Monto_Deposito,
                     modeloVista.Id_Cuenta,
-                    modeloVista.Monto_Retiro
+                    modeloVista.Id_Moneda
                     );
             }
-
             catch (Exception error)
             {
                 resultado = "Ocurrió un error: " + error.Message;
@@ -92,20 +79,19 @@ namespace ProyectoFinal.Controllers
             }
 
             Response.Write("<script language=javascript>alert('" + resultado + "')</script>");
-            this.AgregarCuentaViewBag();
-            this.AgregarSaldoViewBag();
-            //this.ViewBag.CuentasViewBag();
+            this.AgregarCuentasViewBag();
+            this.AgregarTipoMonedaViewBag();
             return View();
         }
 
-        [HttpPost]
-        public ActionResult RetornaRetirosLista()
+            [HttpPost]
+        public ActionResult RetornaDepositosLista()
         {
-            List<sp_RetornaRetiros_Result> listaRetiros =
-               this.modeloBD.sp_RetornaRetiros("").ToList();
+            List<sp_RetornaDepositos_Result> listaDepositos =
+               this.modeloBD.sp_RetornaDepositos("").ToList();
             return Json(new
             {
-                resultado = listaRetiros
+                resultado = listaDepositos
             });
         }
 

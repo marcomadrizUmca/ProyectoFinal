@@ -4,30 +4,31 @@
     ViewBag.Title = "TipoClienteElimina";
 }
 
-<h2>TipoClienteElimina</h2>
+<link href="~/Content/CSS/CSSEliminar.css" rel="stylesheet" />
+<div id="Centrar">
 
-<form id="frmEliminaTipoCliente" method="post">
-    <div class="form-group">
-        <label>Nombre:</label>
-        <input type="text" id="Nombre" name="Nombre" class="form-control" value="@Model.Nombre" readonly />
-    </div>
+    <h2 style="opacity: 0.6">Eliminar Tipo de Clientes</h2>
 
-    <div class="form-group">
-        <label>Descripcion:</label>
-        <input type="text" name="Descripcion" id="Descripcion" class="form-control" value="@Model.Descripcion" readonly/>
-    </div>
+    <form id="frmEliminaTipoCliente" method="post">
+        <div class="form-group">
+            <label>Nombre:</label>
+            <input type="text" id="Nombre" name="Nombre" class="form-control" value="@Model.Nombre" readonly />
+        </div>
 
-    <div class="form-group">
-        <input type="submit" value="Eliminar" id="btnAceptar" />
-    </div>
+        <div class="form-group">
+            <label>Descripcion:</label>
+            <input type="text" name="Descripcion" id="Descripcion" class="form-control" value="@Model.Descripcion" readonly />
+        </div>
+
+        <div class="form-group">
+            <input class="boton_personalizado" type="submit" value="Eliminar" id="btnAceptar" />
+            <a class="boton_personalizado" href="~/TiposClientes/TipoClienteLista">Regresar a la Lista</a>
+        </div>
+    </form>
+</div> 
 
 
-    <a href="~/TiposClientes/TipoClienteLista">Regresar a la Lista</a>
-
-
-</form>
-
-@Html.ValidationSummary(true)
-@section scripts{
-    <script src="~/Scripts/Validaciones/ClienteNuevo.js"></script>
-}
+    @Html.ValidationSummary(true)
+    @section scripts{
+        <script src="~/Scripts/Validaciones/ClienteNuevo.js"></script>
+    }

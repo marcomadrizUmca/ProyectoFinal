@@ -3,31 +3,33 @@
     ViewBag.Title = "MonedaNuevo";
 }
 
-<h2>Insertar Moneda Nuevo</h2>
+<link href="~/Content/CSS/CSSEliminar.css" rel="stylesheet" />
+<div id="Centrar">
 
-<form id="frmNuevoMoneda" method="post">
-    <div class="form-group">
-        <label>Nombre:</label>
-        <input type="text" id="Nombre" name="Nombre" class="form-control" />
+    <h2 style="opacity: 0.6">Insertar Moneda Nuevo</h2>
+
+    <form id="frmNuevoMoneda" method="post">
+        <div class="form-group">
+            <label>Nombre:</label>
+            <input type="text" id="Nombre" name="Nombre" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Tipo de Cambio:</label>
+            <input type="text" id="Tipo_Cambio" name="Tipo_Cambio" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Codigo:</label>
+            <input type="text" name="Codigo" id="Codigo" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <input class="boton_personalizado" type="submit" value="Guardar" id="btnAceptar" />
+            <a class="boton_personalizado" href="~/Monedas/TipoMonedaLista">Regresar a la Lista</a>
+        </div>
+
+        
+    </form>
+
     </div>
-
-    <div class="form-group">
-        <label>Tipo de Cambio:</label>
-        <input type="text" id="Tipo_Cambio" name="Tipo_Cambio" class="form-control"/>
-    </div>
-
-    <div class="form-group">
-        <label>Codigo:</label>
-        <input type="text" name="Codigo" id="Codigo" class="form-control" />
-    </div>
-
-    <div class="form-group">
-        <input type="submit" value="Guardar" id="btnAceptar" />
-    </div>
-
-
-    <a href="~/Monedas/TipoMonedaLista">Regresar a la Lista</a>
-
-
-</form>
-
