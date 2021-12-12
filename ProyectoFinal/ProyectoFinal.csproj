@@ -234,6 +234,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CSS\Carousel.css" />
+    <Content Include="Content\CSS\carouselSprite.css" />
     <Content Include="Content\CSS\CSS.css" />
     <Content Include="Content\CSS\CSSEliminar.css" />
     <Content Include="Content\CSS\Inicio.css" />
@@ -242,11 +244,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Imagenes\banco del pueblo.PNG" />
-    <Content Include="Imagenes\Banco1.png" />
-    <Content Include="Imagenes\Banco2.jpg" />
-    <Content Include="Imagenes\Banco4.jpg" />
-    <Content Include="Imagenes\Banco5.jpg" />
+    <Content Include="Content\Imagenes\banco del pueblo.PNG" />
+    <Content Include="Content\Imagenes\Banco1.png" />
+    <Content Include="Content\Imagenes\Banco2.jpg" />
+    <Content Include="Content\Imagenes\Banco3.jpg" />
+    <Content Include="Content\Imagenes\Banco4.jpg" />
+    <Content Include="Content\Imagenes\Banco5.jpg" />
+    <Content Include="Content\Imagenes\SpritesBanco.png" />
     <Content Include="Models\bancoBDModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>bancoBDModel.edmx</DependentUpon>
