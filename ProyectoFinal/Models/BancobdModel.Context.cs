@@ -359,12 +359,8 @@ namespace ProyectoFinal.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaTipos_Cuentas", nombreParameter, codigoParameter);
         }
     
-        public virtual int sp_InsertaTransferencias(Nullable<int> id_Cliente, Nullable<int> cuenta_Origen, Nullable<int> cuenta_Destino, Nullable<int> id_Moneda, Nullable<decimal> monto_Transferencia)
+        public virtual int sp_InsertaTransferencias(Nullable<int> cuenta_Origen, Nullable<int> cuenta_Destino, Nullable<int> id_Moneda, Nullable<decimal> monto_Transferencia)
         {
-            var id_ClienteParameter = id_Cliente.HasValue ?
-                new ObjectParameter("Id_Cliente", id_Cliente) :
-                new ObjectParameter("Id_Cliente", typeof(int));
-    
             var cuenta_OrigenParameter = cuenta_Origen.HasValue ?
                 new ObjectParameter("Cuenta_Origen", cuenta_Origen) :
                 new ObjectParameter("Cuenta_Origen", typeof(int));
@@ -381,7 +377,7 @@ namespace ProyectoFinal.Models
                 new ObjectParameter("Monto_Transferencia", monto_Transferencia) :
                 new ObjectParameter("Monto_Transferencia", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaTransferencias", id_ClienteParameter, cuenta_OrigenParameter, cuenta_DestinoParameter, id_MonedaParameter, monto_TransferenciaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaTransferencias", cuenta_OrigenParameter, cuenta_DestinoParameter, id_MonedaParameter, monto_TransferenciaParameter);
         }
     
         public virtual int sp_ModificaClientes(Nullable<int> id_Cliente, Nullable<int> cedula, string genero, Nullable<System.DateTime> fecha_Nacimiento, string nombre, string primer_Apellido, string segundo_Apellido, string direccion_Fisica, Nullable<int> telefono_Principal, Nullable<int> telefono_Secundario, string correo_Electronico, Nullable<int> tipo_Cliente, string clave_Acceso)
@@ -658,18 +654,18 @@ namespace ProyectoFinal.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaTipos_Cuentas_Result>("sp_RetornaTipos_Cuentas", id_Tipo_CuentaParameter);
         }
     
-        public virtual int sp_RetornaTransferencias(string id_Transferencia)
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<sp_RetornaTransferencias_Result> sp_RetornaTransferencias(string id_Transferencia)
         {
             var id_TransferenciaParameter = id_Transferencia != null ?
                 new ObjectParameter("Id_Transferencia", id_Transferencia) :
                 new ObjectParameter("Id_Transferencia", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_RetornaTransferencias", id_TransferenciaParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaTransferencias_Result>("sp_RetornaTransferencias", id_TransferenciaParameter);
         }
     }
 }

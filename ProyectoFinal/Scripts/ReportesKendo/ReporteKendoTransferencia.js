@@ -8,7 +8,7 @@
 // RetornaRetirosLista()
 function obtenerRegistrosCuentas() {
     /////construir la dirección del método del servidor
-    var urlMetodo = '/Retiros/RetornaRetirosLista'
+    var urlMetodo = '/Transferencias/RetornaTransferenciasLista'
     var parametros = {};
     var funcion = creaGridKendo;
     ///ejecuta la función $.ajax utilizando un método genérico
@@ -24,40 +24,40 @@ function creaGridKendo(data) {
         ///Kendo Grid
         dataSource: {
             data: data.resultado,
-            pageSize: 2
+            pageSize: 5
         },
         pageable: true,
         columns: [
             ///Cada columna se agrega por llaves
             {
                 ///Propiedad de la fuente de datos a mostras
-                field: 'Numero_Cuenta',
+                field: 'cuentaOrigen',
                 ///texto del encabezado
-                title: 'Numero de Cuenta'
+                title: 'Numero de Cuenta de Origen'
             },
             {
-                field: 'NombreMoneda',
-                title: 'Tipo de Moneda'
+                field: 'cuentaDestino',
+                title: 'Numero de Cuenta de Destino'
             },
             {
-                field: 'Fecha',
-                title: 'Fecha del Retiro'
+                field: 'Nombre',
+                title: 'Nombre de la Moneda'
             },
             {
-                field: 'Monto_Retiro',
-                title: 'Monto Retirado'
+                field: 'Monto_Transferencia',
+                title: 'Monto de la Transferencia'
             },
 
         ],
         filterable: true,
         toolbar: ["excel", "pdf"],
         excel: {
-            fileName: "Lista de Retiros.xlsx",
+            fileName: "Lista de Transferencias.xlsx",
             filterable: true,
             allPages: true,
         },
         pdf: {
-            fileName: "Lista de Retiros.pdf",
+            fileName: "Lista de Transferencias.pdf",
             author: "UMCA",
             creator: "Marco Madriz Herrera",
             date: new Date(),
