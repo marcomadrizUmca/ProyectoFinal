@@ -4,104 +4,108 @@
     ViewBag.Title = "ClienteModifica";
 }
 
-<h2>Modificar Cliente</h2>
+<link href="~/Content/CSS/CSSEliminar.css" rel="stylesheet" />
+<div id="Centrar">
+    <h2 style="opacity: 0.6">Modificar Cliente</h2>
 
-<form id="frmModificaCliente" method="post">
-    <div class="form-group">
-        <label>Cedula:</label>
-        <input type="text" name="Cedula" id="Cedula" class="form-control" value="@Model.Cedula" />
-    </div>
-    <br />
-    <div class="form-check">
-        <label>Genero:  </label>
+    <form id="frmModificaCliente" method="post">
+        <div class="form-group">
+            <label>Cedula:</label>
+            <input type="text" name="Cedula" id="Cedula" class="form-control" value="@Model.Cedula" />
+        </div>
+        <br />
+        <div class="form-check">
+            <label>Genero:  </label>
 
-        <input type="radio" name="Genero" value="femenino" class="form-check-input"  @(Model.Genero.ToLower()=="femenino"?"checked":"") /> Femenino
+            <input type="radio" name="Genero" value="femenino" class="form-check-input" @(Model.Genero.ToLower() == "femenino" ? "checked" : "") /> Femenino
 
-        <input type="radio" name="Genero" value="masculino" class="form-check-input" @(Model.Genero.ToLower()=="masculino"?"checked":"")/> Masculino
+            <input type="radio" name="Genero" value="masculino" class="form-check-input" @(Model.Genero.ToLower() == "masculino" ? "checked" : "") /> Masculino
 
-        <input type="radio" name="Genero" value="indefinido" class="form-check-input" @(Model.Genero.ToLower()=="indefinido"?"checked":"")/> Indefinido
-    </div>
-    <br />
+            <input type="radio" name="Genero" value="indefinido" class="form-check-input" @(Model.Genero.ToLower() == "indefinido" ? "checked" : "") /> Indefinido
+        </div>
+        <br />
 
-    <div class="form-group">
-        <label>Fecha de Nacimiento:</label>
-        <input type="text" name="Fecha_Nacimiento" id="Fecha_Nacimiento" class="form-control" value="@Model.Fecha_Nacimiento"/>
-    </div>
+        <div class="form-group">
+            <label>Fecha de Nacimiento:</label>
+            <input type="text" name="Fecha_Nacimiento" id="Fecha_Nacimiento" class="form-control" value="@Model.Fecha_Nacimiento" />
+        </div>
 
-    <div class="form-group">
-        <label>Nombre:</label>
-        <input type="text" name="nombre" id="nombre" class="form-control" value="@Model.Nombre" />
-    </div>
+        <div class="form-group">
+            <label>Nombre:</label>
+            <input type="text" name="nombre" id="nombre" class="form-control" value="@Model.Nombre" />
+        </div>
 
-    <div class="form-group">
-        <label>Primero Apellido:</label>
-        <input type="text" name="Primer_Apellido" id="Primer_Apellido" class="form-control" value="@Model.Primer_Apellido" />
-    </div>
+        <div class="form-group">
+            <label>Primero Apellido:</label>
+            <input type="text" name="Primer_Apellido" id="Primer_Apellido" class="form-control" value="@Model.Primer_Apellido" />
+        </div>
 
-    <div class="form-group">
-        <label>Segundo Apellido:</label>
-        <input type="text" name="Segundo_Apellido" id="Segundo_Apellido" class="form-control" value="@Model.Segundo_Apellido"/>
-    </div>
+        <div class="form-group">
+            <label>Segundo Apellido:</label>
+            <input type="text" name="Segundo_Apellido" id="Segundo_Apellido" class="form-control" value="@Model.Segundo_Apellido" />
+        </div>
 
-    <div class="form-group">
-        <label>Dirección Fisica:</label>
-        <input type="text" name="Direccion_Fisica" id="Direccion_Fisica" class="form-control" value="@Model.Direccion_Fisica"/>
-    </div>
+        <div class="form-group">
+            <label>Dirección Fisica:</label>
+            <input type="text" name="Direccion_Fisica" id="Direccion_Fisica" class="form-control" value="@Model.Direccion_Fisica" />
+        </div>
 
-    <div class="form-group">
-        <label>Telefono Principal:</label>
-        <input type="text" name="Telefono_Principal" id="Telefono_Principal" class="form-control" value="@Model.Telefono_Principal"/>
-    </div>
+        <div class="form-group">
+            <label>Telefono Principal:</label>
+            <input type="text" name="Telefono_Principal" id="Telefono_Principal" class="form-control" value="@Model.Telefono_Principal" />
+        </div>
 
-    <div class="form-group">
-        <label>Telefono Secundario:</label>
-        <input type="text" name="Telefono_Secundario" id="Telefono_Secundario" class="form-control" value="@Model.Telefono_Secundario" />
-    </div>
+        <div class="form-group">
+            <label>Telefono Secundario:</label>
+            <input type="text" name="Telefono_Secundario" id="Telefono_Secundario" class="form-control" value="@Model.Telefono_Secundario" />
+        </div>
 
-    <div class="form-group">
-        <label>Correo electrónico</label>
-        <input type="text" name="Correo_Electronico" id="Correo_Electronico" class="form-control" value="@Model.Correo_Electronico"/>
-    </div>
+        <div class="form-group">
+            <label>Correo electrónico</label>
+            <input type="text" name="Correo_Electronico" id="Correo_Electronico" class="form-control" value="@Model.Correo_Electronico" />
+        </div>
 
-    <div class="form-group">
-        <label>Tipo de Cliente :</label>
-        <select name="Tipo_Cliente" id="Tipo_Cliente" class="form-control">
-            <option value="">SELECCIONE UNA OPCIÓN</option>
-            @{
-                foreach (ProyectoFinal.Models.sp_RetornaTipo_Clientes_Result tipoCliente in this.ViewBag.ListaTipoCliente)
-                {
-                    bool esIdTipoCliente = tipoCliente.Id_Tipo_Cliente == Model.Tipo_Cliente;
-                    @*
-                Incluir la propiedad selected para que la opción aparazca seleccionada. Se compara la propiedad
-                id_Provincia del objeto del viewBag contra la propiedad id_Provincia del modelo de la vista
-                    *@
-                    if (esIdTipoCliente)
+        <div class="form-group">
+            <label>Tipo de Cliente :</label>
+            <select name="Tipo_Cliente" id="Tipo_Cliente" class="form-control">
+                <option value="">SELECCIONE UNA OPCIÓN</option>
+                @{
+                    foreach (ProyectoFinal.Models.sp_RetornaTipo_Clientes_Result tipoCliente in this.ViewBag.ListaTipoCliente)
                     {
-                        <option value="@tipoCliente.Id_Tipo_Cliente" selected>@tipoCliente.Nombre.ToUpper() </option>
-                    }
-                    else
-                    {
-                        <option value="@tipoCliente.Id_Tipo_Cliente">@tipoCliente.Nombre.ToUpper() </option>
+                        bool esIdTipoCliente = tipoCliente.Id_Tipo_Cliente == Model.Tipo_Cliente;
+                        @*
+                            Incluir la propiedad selected para que la opción aparazca seleccionada. Se compara la propiedad
+                            id_Provincia del objeto del viewBag contra la propiedad id_Provincia del modelo de la vista
+                        *@
+                        if (esIdTipoCliente)
+                        {
+                            <option value="@tipoCliente.Id_Tipo_Cliente" selected>@tipoCliente.Nombre.ToUpper() </option>
+                        }
+                        else
+                        {
+                            <option value="@tipoCliente.Id_Tipo_Cliente">@tipoCliente.Nombre.ToUpper() </option>
+                        }
+
                     }
 
                 }
+            </select>
+        </div>
 
-            }
-        </select>
-    </div>
+        <div class="form-group">
+            <label>Clave:</label>
+            <input type="password" name="Clave_Acceso" id="Clave_Acceso" class="form-control" value="@Model.Clave_Acceso" />
+        </div>
 
-    <div class="form-group">
-        <label>Clave:</label>
-        <input type="password" name="Clave_Acceso" id="Clave_Acceso" class="form-control" value="@Model.Clave_Acceso"/>
-    </div>
+        <div class="form-group">
+            <input class="boton_personalizado" type="submit" value="Guardar" id="btnAceptar" />
+            <a  class="boton_personalizado" href="~/Clientes/ClienteLista">Regresar a la Lista</a>
+        </div>
 
-    <div class="form-group">
-        <input type="submit" value="Guardar" id="btnAceptar" />
-    </div>
+        
 
-    <a href="~/Clientes/ClienteLista">Regresar a la Lista</a>
-
-</form>
+    </form>
+</div>
 
 @section scripts{
     <script src="~/Scripts/Validaciones/ClienteNuevo.js"></script>

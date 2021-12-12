@@ -22,7 +22,7 @@ namespace ProyectoFinal.Controllers
         //Método post del login(cuando se da click en el botón submit)
         [HttpPost]
         public ActionResult VerificaLogin(sp_AutenticarUsuario_Result modeloVista)
-        {
+        {  
             ///Buscar el usuario tomando en cuena el correo electrónico y la contraseña suministrada
             sp_AutenticarUsuario_Result usuarioBuscar = this.modeloBD.sp_AutenticarUsuario(modeloVista.usuario, modeloVista.clave).FirstOrDefault();
 

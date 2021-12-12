@@ -3,77 +3,76 @@
     ViewBag.Title = "CuentaNueva";
 }
 
-<h2>Agregar Cuenta Nueva</h2>
+<link href="~/Content/CSS/CSSEliminar.css" rel="stylesheet" />
+<div id="Centrar">
 
-<form id="frmNuevaCuenta" method="post">
-    <div class="form-group">
-        <label>Numero de Cuenta:</label>
-        <input type="text" name="Numero_Cuenta" id="Numero_Cuenta" class="form-control" />
-    </div>
+    <h2 style="opacity: 0.6">Agregar Cuenta Nueva</h2>
 
-    @*Trae a los clientes*@
-    <div class="form-group">
-        <label>Nombre del Cliente :</label>
-        <select name="Id_Cliente" id="Id_Cliente" class="form-control">
-            <option value="">SELECCIONE UNA OPCIÓN</option>
-            @{
-                foreach (ProyectoFinal.Models.sp_RetornaClientes_Result Cliente
-                    in this.ViewBag.ListaCliente)
-                {
-                    <option value="@Cliente.Id_Cliente">@Cliente.Nombre.ToUpper() @Cliente.Primer_Apellido.ToUpper() @Cliente.Segundo_Apellido.ToUpper() </option>
+    <form id="frmNuevaCuenta" method="post">
+        <div class="form-group">
+            <label>Numero de Cuenta:</label>
+            <input type="text" name="Numero_Cuenta" id="Numero_Cuenta" class="form-control" />
+        </div>
+
+        @*Trae a los clientes*@
+        <div class="form-group">
+            <label>Nombre del Cliente :</label>
+            <select name="Id_Cliente" id="Id_Cliente" class="form-control">
+                <option value="">SELECCIONE UNA OPCIÓN</option>
+                @{
+                    foreach (ProyectoFinal.Models.sp_RetornaClientes_Result Cliente
+                        in this.ViewBag.ListaCliente)
+                    {
+                        <option value="@Cliente.Id_Cliente">@Cliente.Nombre.ToUpper() @Cliente.Primer_Apellido.ToUpper() @Cliente.Segundo_Apellido.ToUpper() </option>
+                    }
                 }
-            }
-        </select>
-    </div>
+            </select>
+        </div>
 
-    @*Trae las cuentas*@
-    <div class="form-group">
-        <label>Tipo de Cuenta :</label>
-        <select name="Id_Tipo_Cuenta" id="Id_Tipo_Cuenta" class="form-control">
-            <option value="">SELECCIONE UNA OPCIÓN</option>
-            @{
-                foreach (ProyectoFinal.Models.sp_RetornaTipos_Cuentas_Result TipoCuenta
-                    in this.ViewBag.ListaTipoCuenta)
-                {
-                    <option value="@TipoCuenta.Id_Tipo_Cuenta">@TipoCuenta.Nombre.ToUpper()</option>
+        @*Trae las cuentas*@
+        <div class="form-group">
+            <label>Tipo de Cuenta :</label>
+            <select name="Id_Tipo_Cuenta" id="Id_Tipo_Cuenta" class="form-control">
+                <option value="">SELECCIONE UNA OPCIÓN</option>
+                @{
+                    foreach (ProyectoFinal.Models.sp_RetornaTipos_Cuentas_Result TipoCuenta
+                        in this.ViewBag.ListaTipoCuenta)
+                    {
+                        <option value="@TipoCuenta.Id_Tipo_Cuenta">@TipoCuenta.Nombre.ToUpper()</option>
+                    }
                 }
-            }
-        </select>
-    </div>
+            </select>
+        </div>
 
-    @*Trae las Monedas*@
-    <div class="form-group">
-        <label>Tipo de Moneda :</label>
-        <select name="Id_Moneda" id="Id_Moneda" class="form-control">
-            <option value="">SELECCIONE UNA OPCIÓN</option>
-            @{
-                foreach (ProyectoFinal.Models.sp_RetornaMonedas_Result TipoMoneda
-                    in this.ViewBag.ListaMoneda)
-                {
-                    <option value="@TipoMoneda.Id_Moneda">@TipoMoneda.Nombre.ToUpper() @TipoMoneda.Tipo_Cambio</option>
+        @*Trae las Monedas*@
+        <div class="form-group">
+            <label>Tipo de Moneda :</label>
+            <select name="Id_Moneda" id="Id_Moneda" class="form-control">
+                <option value="">SELECCIONE UNA OPCIÓN</option>
+                @{
+                    foreach (ProyectoFinal.Models.sp_RetornaMonedas_Result TipoMoneda
+                        in this.ViewBag.ListaMoneda)
+                    {
+                        <option value="@TipoMoneda.Id_Moneda">@TipoMoneda.Nombre.ToUpper() @TipoMoneda.Tipo_Cambio</option>
+                    }
                 }
-            }
-        </select>
-    </div>
+            </select>
+        </div>
 
-    <div class="form-group">
-        <label>Saldo de la Cuenta:</label>
-        <input type="text" name="Saldo" id="Saldo" class="form-control" value="₡50.000" readonly />
-    </div>
+        <div class="form-group">
+            <label>Saldo de la Cuenta:</label>
+            <input type="text" name="Saldo" id="Saldo" class="form-control" value="₡50.000" readonly />
+        </div>
 
-    <div class="form-group">
-        <label>Estado de la Cuenta:</label>
-        <input type="text" name="Estado" id="Estado" class="form-control" />
-    </div>
+        <div class="form-group">
+            <label>Estado de la Cuenta:</label>
+            <input type="text" name="Estado" id="Estado" class="form-control" />
+        </div>
 
-    <div class="form-group">
-        <input type="submit" value="Guardar" id="btnAceptar" />
-    </div>
+        <div class="form-group">
+            <input class="boton_personalizado" type="submit" value="Guardar" id="btnAceptar" />
+            <a class="boton_personalizado" href="~/Cuentas/CuentasLista">Regresar a la Lista</a>
+        </div>
+    </form>
 
-
-    <a href="~/Cuentas/CuentasLista">Regresar a la Lista</a>
-
-
-
-</form>
-
+</div>

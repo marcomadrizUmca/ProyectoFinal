@@ -95,6 +95,23 @@ namespace ProyectoFinal.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
         }
     
+        public virtual int sp_Depositos(Nullable<decimal> montoDeposito, Nullable<int> cuenta, Nullable<int> id_moneda)
+        {
+            var montoDepositoParameter = montoDeposito.HasValue ?
+                new ObjectParameter("montoDeposito", montoDeposito) :
+                new ObjectParameter("montoDeposito", typeof(decimal));
+    
+            var cuentaParameter = cuenta.HasValue ?
+                new ObjectParameter("cuenta", cuenta) :
+                new ObjectParameter("cuenta", typeof(int));
+    
+            var id_monedaParameter = id_moneda.HasValue ?
+                new ObjectParameter("id_moneda", id_moneda) :
+                new ObjectParameter("id_moneda", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Depositos", montoDepositoParameter, cuentaParameter, id_monedaParameter);
+        }
+    
         public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
@@ -261,7 +278,7 @@ namespace ProyectoFinal.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaCuentas", numero_CuentaParameter, clienteParameter, tipo_CuentaParameter, monedaParameter, saldoParameter, estadoParameter);
         }
     
-        public virtual int sp_InsertaDepositos(Nullable<decimal> monto_Deposito, Nullable<int> id_Cuenta, Nullable<int> id_Moneda, Nullable<int> id_Cliente)
+        public virtual int sp_InsertaDepositos(Nullable<decimal> monto_Deposito, Nullable<int> id_Cuenta, Nullable<int> id_Moneda)
         {
             var monto_DepositoParameter = monto_Deposito.HasValue ?
                 new ObjectParameter("Monto_Deposito", monto_Deposito) :
@@ -275,11 +292,7 @@ namespace ProyectoFinal.Models
                 new ObjectParameter("Id_Moneda", id_Moneda) :
                 new ObjectParameter("Id_Moneda", typeof(int));
     
-            var id_ClienteParameter = id_Cliente.HasValue ?
-                new ObjectParameter("Id_Cliente", id_Cliente) :
-                new ObjectParameter("Id_Cliente", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaDepositos", monto_DepositoParameter, id_CuentaParameter, id_MonedaParameter, id_ClienteParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaDepositos", monto_DepositoParameter, id_CuentaParameter, id_MonedaParameter);
         }
     
         public virtual int sp_InsertaMonedas(string nombre, Nullable<decimal> tipo_Cambio, string codigo)
@@ -573,11 +586,20 @@ namespace ProyectoFinal.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaCuentas_Result>("sp_RetornaCuentas", id_CuentaParameter);
         }
     
-        public virtual ObjectResult<sp_RetornaDepositos_Result> sp_RetornaDepositos(Nullable<int> id_Deposito)
+        public virtual ObjectResult<sp_RetornaCuentasUsuario_Result> sp_RetornaCuentasUsuario(Nullable<int> id_cliente)
         {
-            var id_DepositoParameter = id_Deposito.HasValue ?
+            var id_clienteParameter = id_cliente.HasValue ?
+                new ObjectParameter("id_cliente", id_cliente) :
+                new ObjectParameter("id_cliente", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaCuentasUsuario_Result>("sp_RetornaCuentasUsuario", id_clienteParameter);
+        }
+    
+        public virtual ObjectResult<sp_RetornaDepositos_Result> sp_RetornaDepositos(string id_Deposito)
+        {
+            var id_DepositoParameter = id_Deposito != null ?
                 new ObjectParameter("Id_Deposito", id_Deposito) :
-                new ObjectParameter("Id_Deposito", typeof(int));
+                new ObjectParameter("Id_Deposito", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaDepositos_Result>("sp_RetornaDepositos", id_DepositoParameter);
         }

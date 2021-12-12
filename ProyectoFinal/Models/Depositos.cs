@@ -18,9 +18,7 @@ namespace ProyectoFinal.Models
         public decimal Monto_Deposito { get; set; }
         public int Id_Cuenta { get; set; }
         public int Id_Moneda { get; set; }
-        public int Id_Cliente { get; set; }
     
-        public virtual Clientes Clientes { get; set; }
         public virtual Cuentas Cuentas { get; set; }
         public virtual Monedas Monedas { get; set; }
     }

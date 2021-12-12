@@ -129,11 +129,13 @@
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\CorreoController.cs" />
     <Compile Include="Controllers\CuentasController.cs" />
+    <Compile Include="Controllers\DepositosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MonedasController.cs" />
     <Compile Include="Controllers\ReporteClientesController.cs" />
+    <Compile Include="Controllers\ReporteDepositosController.cs" />
     <Compile Include="Controllers\ReporteRetirosController.cs" />
     <Compile Include="Controllers\RetirosController.cs" />
     <Compile Include="Controllers\TipoCuentasController.cs" />
@@ -159,7 +161,6 @@
     <Compile Include="Models\Clientes.cs">
       <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Correo.cs" />
     <Compile Include="Models\Cuentas.cs">
       <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
@@ -188,6 +189,9 @@
       <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaClientes_Result.cs">
+      <DependentUpon>bancoBDModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_RetornaCuentasUsuario_Result.cs">
       <DependentUpon>bancoBDModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaCuentas_Result.cs">
@@ -234,6 +238,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CSS\Carousel.css" />
+    <Content Include="Content\CSS\carouselSprite.css" />
     <Content Include="Content\CSS\CSS.css" />
     <Content Include="Content\CSS\CSSEliminar.css" />
     <Content Include="Content\CSS\Inicio.css" />
@@ -242,11 +248,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Imagenes\banco del pueblo.PNG" />
-    <Content Include="Imagenes\Banco1.png" />
-    <Content Include="Imagenes\Banco2.jpg" />
-    <Content Include="Imagenes\Banco4.jpg" />
-    <Content Include="Imagenes\Banco5.jpg" />
+    <Content Include="Content\Imagenes\banco del pueblo.PNG" />
+    <Content Include="Content\Imagenes\Banco1.png" />
+    <Content Include="Content\Imagenes\Banco2.jpg" />
+    <Content Include="Content\Imagenes\Banco3.jpg" />
+    <Content Include="Content\Imagenes\Banco4.jpg" />
+    <Content Include="Content\Imagenes\Banco5.jpg" />
+    <Content Include="Content\Imagenes\SpritesBanco.png" />
     <Content Include="Models\bancoBDModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>bancoBDModel.edmx</DependentUpon>
@@ -297,6 +305,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\JS\Prueba.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ReportesKendo\ReporteKendoDeposito.js" />
+    <Content Include="Scripts\ReportesKendo\ReporteKendoRetiro.js" />
     <Content Include="Scripts\ReportesKendo\ReporteKendoRetiros.js" />
     <Content Include="Scripts\ReportesKendo\ReportesKendoUI.js" />
     <Content Include="Scripts\ScriptGenerico.js" />

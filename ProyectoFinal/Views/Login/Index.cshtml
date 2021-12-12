@@ -15,6 +15,9 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    <h1 style="opacity: 0.6">El Banco del Pueblo</h1>
+
+
     @*
         Crear el fomulario e indicarle al action y el método
             action=variable crada en la línea
@@ -46,14 +49,15 @@
             redirecting...
         </div>
         @*
-        Mostrar los mensajes que enviamos desde el controlador. Por ejemplo (ver controlador):
-            this.ModelState.AddModelError("", "Usuario o contraseña inválidos. Por favor Verifique");
+            Mostrar los mensajes que enviamos desde el controlador. Por ejemplo (ver controlador):
+                this.ModelState.AddModelError("", "Usuario o contraseña inválidos. Por favor Verifique");
         *@
         @Html.ValidationSummary(true)
     </form>
     <script src="~/Scripts/JS/Prueba.js"></script>
     @Scripts.Render("~/bundles/bundleJquery")
-    @Scripts.Render("~/bundles/bootstrap")
+
+   
 </body>
 </html>
 

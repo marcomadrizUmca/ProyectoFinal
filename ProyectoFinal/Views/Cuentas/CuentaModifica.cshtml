@@ -3,100 +3,104 @@
     ViewBag.Title = "CuentaModifica";
 }
 
-<h2>Cuenta Modificadas</h2>
+<link href="~/Content/CSS/CSSEliminar.css" rel="stylesheet" />
+<div id="Centrar">
 
-<form id="frmNuevaCuenta" method="post">
-    <div class="form-group">
-        <label>Numero de Cuenta:</label>
-        <input type="text" name="Numero_Cuenta" id="Numero_Cuenta" class="form-control" value="@Model.Numero_Cuenta" />
-    </div>
+    <h2 style="opacity: 0.6">Modificar Cuentas</h2>
 
-    @*Trae a los clientes*@
+    <form id="frmNuevaCuenta" method="post">
+        <div class="form-group">
+            <label>Numero de Cuenta:</label>
+            <input type="text" name="Numero_Cuenta" id="Numero_Cuenta" class="form-control" value="@Model.Numero_Cuenta" />
+        </div>
 
-    <div class="form-group">
-        <label>Nombre del Cliente :</label>
-        <select name="Id_Cliente" id="Id_Cliente" class="form-control">
-            <option value="">SELECCIONE UNA OPCIÓN</option>
-            @{
-                foreach (ProyectoFinal.Models.sp_RetornaClientes_Result Cliente in this.ViewBag.ListaCliente)
-                {
-                    bool esIdTipoCliente = Cliente.Id_Cliente == Model.Id_Cliente;
-                    if (esIdTipoCliente)
+        @*Trae a los clientes*@
+
+        <div class="form-group">
+            <label>Nombre del Cliente :</label>
+            <select name="Id_Cliente" id="Id_Cliente" class="form-control">
+                <option value="">SELECCIONE UNA OPCIÓN</option>
+                @{
+                    foreach (ProyectoFinal.Models.sp_RetornaClientes_Result Cliente in this.ViewBag.ListaCliente)
                     {
-                        <option value="@Cliente.Id_Cliente" selected>@Cliente.Nombre.ToUpper() @Cliente.Primer_Apellido.ToUpper() @Cliente.Segundo_Apellido.ToUpper()</option>
-                    }
-                    else
-                    {
-                        <option value="@Cliente.Id_Cliente">@Cliente.Nombre.ToUpper() @Cliente.Primer_Apellido.ToUpper() @Cliente.Segundo_Apellido.ToUpper() </option>
+                        bool esIdTipoCliente = Cliente.Id_Cliente == Model.Id_Cliente;
+                        if (esIdTipoCliente)
+                        {
+                            <option value="@Cliente.Id_Cliente" selected>@Cliente.Nombre.ToUpper() @Cliente.Primer_Apellido.ToUpper() @Cliente.Segundo_Apellido.ToUpper()</option>
+                        }
+                        else
+                        {
+                            <option value="@Cliente.Id_Cliente">@Cliente.Nombre.ToUpper() @Cliente.Primer_Apellido.ToUpper() @Cliente.Segundo_Apellido.ToUpper() </option>
                         }
 
                     }
                 }
-        </select>
-    </div>
+            </select>
+        </div>
 
-    @*Trae las cuentas*@
-    <div class="form-group">
-        <label>Tipo de Cuenta :</label>
-        <select name="Id_Tipo_Cuenta" id="Id_Tipo_Cuenta" class="form-control">
-            <option value="">SELECCIONE UNA OPCIÓN</option>
-            @{
-                foreach (ProyectoFinal.Models.sp_RetornaTipos_Cuentas_Result TipoCuenta in this.ViewBag.ListaTipoCuenta)
-                {
-                    bool esIdTipoCuenta = TipoCuenta.Id_Tipo_Cuenta == Model.Id_Tipo_Cuenta;
+        @*Trae las cuentas*@
+        <div class="form-group">
+            <label>Tipo de Cuenta :</label>
+            <select name="Id_Tipo_Cuenta" id="Id_Tipo_Cuenta" class="form-control">
+                <option value="">SELECCIONE UNA OPCIÓN</option>
+                @{
+                    foreach (ProyectoFinal.Models.sp_RetornaTipos_Cuentas_Result TipoCuenta in this.ViewBag.ListaTipoCuenta)
+                    {
+                        bool esIdTipoCuenta = TipoCuenta.Id_Tipo_Cuenta == Model.Id_Tipo_Cuenta;
 
-                    if (esIdTipoCuenta)
-                    {
-                        <option value="@TipoCuenta.Id_Tipo_Cuenta" selected>@TipoCuenta.Nombre.ToUpper()</option>
-                    }
-                    else
-                    {
-                       <option value="@TipoCuenta.Id_Tipo_Cuenta">@TipoCuenta.Nombre.ToUpper()</option>
+                        if (esIdTipoCuenta)
+                        {
+                            <option value="@TipoCuenta.Id_Tipo_Cuenta" selected>@TipoCuenta.Nombre.ToUpper()</option>
+                        }
+                        else
+                        {
+                            <option value="@TipoCuenta.Id_Tipo_Cuenta">@TipoCuenta.Nombre.ToUpper()</option>
                         }
 
 
                     }
                 }
-            
-        </select>
-    </div>
 
-    @*Trae las Monedas*@
-    <div class="form-group">
-        <label>Tipo de Moneda :</label>
-        <select name="Id_Moneda" id="Id_Moneda" class="form-control">
-            <option value="">SELECCIONE UNA OPCIÓN</option>
-            @{
-                foreach (ProyectoFinal.Models.sp_RetornaMonedas_Result TipoMoneda in this.ViewBag.ListaMoneda)
-                {
+            </select>
+        </div>
 
-                    bool esIdTipoMoneda = TipoMoneda.Id_Moneda == Model.Id_Moneda;
-
-                    if (esIdTipoMoneda)
+        @*Trae las Monedas*@
+        <div class="form-group">
+            <label>Tipo de Moneda :</label>
+            <select name="Id_Moneda" id="Id_Moneda" class="form-control">
+                <option value="">SELECCIONE UNA OPCIÓN</option>
+                @{
+                    foreach (ProyectoFinal.Models.sp_RetornaMonedas_Result TipoMoneda in this.ViewBag.ListaMoneda)
                     {
-                    <option value="@TipoMoneda.Id_Moneda" selected>@TipoMoneda.Nombre.ToUpper() @TipoMoneda.Tipo_Cambio</option>
-                    }
-                    else
-                    {
-                    <option value="@TipoMoneda.Id_Moneda">@TipoMoneda.Nombre.ToUpper() @TipoMoneda.Tipo_Cambio</option>
+
+                        bool esIdTipoMoneda = TipoMoneda.Id_Moneda == Model.Id_Moneda;
+
+                        if (esIdTipoMoneda)
+                        {
+                            <option value="@TipoMoneda.Id_Moneda" selected>@TipoMoneda.Nombre.ToUpper() @TipoMoneda.Tipo_Cambio</option>
+                        }
+                        else
+                        {
+                            <option value="@TipoMoneda.Id_Moneda">@TipoMoneda.Nombre.ToUpper() @TipoMoneda.Tipo_Cambio</option>
                         }
                     }
                 }
-        </select>
-    </div>
+            </select>
+        </div>
 
-    <div class="form-group">
-        <label>Saldo de la Cuenta:</label>
-        <input type="text" name="Saldo" id="Saldo" class="form-control" value="@Model.Saldo" readonly />
-    </div>
+        <div class="form-group">
+            <label>Saldo de la Cuenta:</label>
+            <input type="text" name="Saldo" id="Saldo" class="form-control" value="@Model.Saldo" readonly />
+        </div>
 
-    <div class="form-group">
-        <label>Estado de la Cuenta:</label>
-        <input type="text" name="Estado" id="Estado" class="form-control" value="@Model.Estado" />
-    </div>
+        <div class="form-group">
+            <label>Estado de la Cuenta:</label>
+            <input type="text" name="Estado" id="Estado" class="form-control" value="@Model.Estado" />
+        </div>
 
-    <div class="form-group">
-        <input type="submit" value="Modificar" id="btnAceptar" />
-    </div>
-    <a href="~/Cuentas/CuentasLista">Regresar a la Lista</a>
-</form>
+        <div class="form-group">
+            <input class="boton_personalizado" type="submit" value="Modificar" id="btnAceptar" />
+            <a class="boton_personalizado" href="~/Cuentas/CuentasLista">Regresar a la Lista</a>
+        </div> 
+    </form>
+</div>

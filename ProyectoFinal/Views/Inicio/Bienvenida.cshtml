@@ -1,62 +1,125 @@
 ﻿@model ProyectoFinal.Models.sp_AutenticarUsuario_Result
 @{
     ViewBag.Title = "Bienvenida";
+
+
 }
+@section css{
+    <link href="~/Content/CSS/carouselSprite.css" rel="stylesheet" />
+}
+
+
+
 
 <div>
     <form class="form-horizontal">
         <div class="form-group">
             <label class="control-label col-sm-1"></label>
-            <div class="col-sm-7">
-                <h2>Bienvenido(a)</h2>
-            </div>
         </div>
-        <div class="form-group">
-            <label class="control-label col-sm-4" for="nombrecompleto">Nombre Completo:</label>
-            <div class="col-sm-4">
-                @Html.DisplayFor(model => model.nombrecompleto)
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-4" for="ultimoIngreso">Fecha de Ingreso</label>
-            <div class="col-sm-4">
-                @Html.DisplayFor(model => model.ultimoIngreso)
-            </div>
+        <div class="col-sm-7">
+            <h2>Bienvenido(a)</h2>
+
+            <h3>BANCO DEL PUEBLO</h3>
+            <figure>
+                <img src="~/Content/Imagenes/banco del pueblo.PNG" />
+
+                <figcaption>Somos del Pueblo y para el Pueblo</figcaption>
+            </figure>
         </div>
 
 
     </form>
-    
-
 </div>
-<div class="col-sm-4">
-    <h3>Ver Video</h3>
-    
 
-    <video width="320" height="240" controls="controls">
-        <source src="~/Video/Banco%20del%20Pueblo%20Soberano%20-%20Organizando%20las%20fuerzas%20productivas.mp4" type="video/mp4" />
-        <source src="~/Video/Banco%20del%20Pueblo%20Soberano%20-%20Organizando%20las%20fuerzas%20productivas.ogg" type="video/ogg" />
-        El navegador no soporta video.
-    </video>
-    <div/>
+
+
+
+<div class="form-group">
+    <label class="control-label col-sm-3" for="nombrecompleto">Nombre Completo:</label>
     <div class="col-sm-4">
+        @Html.DisplayFor(model => model.nombrecompleto)
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-sm-3" for="ultimoIngreso">Fecha de Ingreso</label>
+    <div class="col-sm-4">
+        @Html.DisplayFor(model => model.ultimoIngreso)
+    </div>
+</div>
+
+
+
+
+
+<form>
+    <div class="col-sm-3">
+        <h3>Ver Video</h3>
+
+
+        <video width="320" height="240" controls="controls">
+            <source src="~/Video/Banco%20del%20Pueblo%20Soberano%20-%20Organizando%20las%20fuerzas%20productivas.mp4" type="video/mp4" />
+            <source src="~/Video/Banco%20del%20Pueblo%20Soberano%20-%20Organizando%20las%20fuerzas%20productivas.ogg" type="video/ogg" />
+            El navegador no soporta video.
+        </video>
+    </div>
+
+    <div class="col-sm-3">
         <h3>Audio</h3>
         <audio controls>
             <source src="~/Audio/videoplayback.m4a" type="audio/mpeg">
-    </audio>
-        <h3>BANCO DEL PUEBLO</h3>
-        <figure>
-            <img src="~/Imagenes/banco del pueblo.PNG"  />
-            <figcaption>Somos del Pueblo y para el Pueblo</figcaption>
-        </figure>
-        <div/>
-
-
+        </audio>
     </div>
+</form>
 
 
-   
-
-
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol id="olCarousel" class="carousel-indicators">
+        <li data-target="myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="myCarousel" data-slide-to="1"></li>
+        <li data-target="myCarousel" data-slide-to="2"></li>
+        <li data-target="myCarousel" data-slide-to="3"></li>
+        <li data-target="myCarousel" data-slide-to="4"></li>
+        <li data-target="myCarousel" data-slide-to="5"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <span class="sprite Banco1"> </span>
+        </div>
+        <div class="item">
+            <span class="sprite Banco2"></span>
+        </div>
+        <div class="item">
+            <span class="sprite Banco3"></span>
+        </div>
+        <div class="item">
+            <span class="sprite Banco4"></span>
+        </div>
+        <div class="item">
+            <span class="sprite Banco5"></span>
+        </div>
+        <div class="item">
+            <span class="sprite banco-del-pueblo"></span>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+        </a>
+    </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
