@@ -24,7 +24,7 @@ function creaGridKendo(data) {
         ///Kendo Grid
         dataSource: {
             data: data.resultado,
-            pageSize: 2
+            pageSize: 5
         },
         pageable: true,
         columns: [

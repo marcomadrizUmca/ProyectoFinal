@@ -1,0 +1,43 @@
+﻿@model List<ProyectoFinal.Models.sp_RetornaTransferencias_Result>
+
+@{
+    ViewBag.Title = "TransferenciasLista";
+}
+
+
+<link href="~/Content/CSS/CSS.css" rel="stylesheet" />
+
+<h2 style="opacity:0.6">Lista de Transferencias</h2>
+
+
+<table class="table table-hover table-striped" style="opacity:0.5">
+    <tr>
+        <th id="Encabezado">Cuenta Origen</th>
+        <th id="Encabezado">Cuenta Destino</th>
+        <th id="Encabezado">Tipo de Moneda</th>
+        <th id="Encabezado">Monto Transferido</th>
+
+    </tr>
+    @{
+         foreach(ProyectoFinal.Models.sp_RetornaTransferencias_Result posicionModelo in this.Model)
+                   
+        {
+            <tr>
+                <td>@posicionModelo.cuentaOrigen</td>
+                <td>@posicionModelo.cuentaDestino</td>
+                <td>@posicionModelo.Nombre</td>
+                <td>@posicionModelo.Monto_Transferencia</td>
+
+
+                @*<td>
+                        <a href="~/Cuentas/CuentaModifica?Id_Cuenta=@posicionModelo.Id_Cuenta">Modificar</a>
+                        <br />
+                        <a href="~/Cuentas/CuentaElimina?Id_Cuenta=@posicionModelo.Id_Cuenta">Eliminar</a>
+                    </td>*@
+            </tr>
+        }
+
+    }
+</table>
+
+<ul><li><a id="Enlace" href="~/Retiros/InsertaRetiro" style="opacity:0.6">Agregar Nuevo Retiro</a></li></ul>
