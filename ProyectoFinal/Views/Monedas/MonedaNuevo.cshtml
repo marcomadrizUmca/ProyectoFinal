@@ -28,8 +28,9 @@
             <input class="boton_personalizado" type="submit" value="Guardar" id="btnAceptar" />
             <a class="boton_personalizado" href="~/Monedas/TipoMonedaLista">Regresar a la Lista</a>
         </div>
-
-        
     </form>
-
-    </div>
+</div>
+@Html.ValidationSummary(true)
+@section scripts{
+    <script src="~/Scripts/Validaciones/Monedas.js"></script>
+}
