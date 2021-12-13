@@ -29,7 +29,71 @@ namespace ProyectoFinal.Controllers
             return View(modeloVista);
         }
 
+        void AgregarCuentaViewBag()
+        {
+            this.ViewBag.ListaCuenta = this.modeloBD.sp_RetornaCuentas("").ToList();
+        }
 
+
+        public ActionResult InsertaTransferencias()
+        {
+
+            this.AgregarCuentaViewBag();
+            return View();
+        }
+
+        [HttpPost]
+
+        public ActionResult InsertaTransferencias(sp_RetornaTransferencias_Result modeloVista)
+        {
+
+            int cantRegistroAfectado = 0;
+            string resultado = "";
+
+            //if (Session["datosUsuario"] != null)
+            //{
+            //    sp_AutenticarUsuario_Result modelo = (sp_AutenticarUsuario_Result)this.Session["datosUsuario"];
+
+            //    this.ViewBag.CuentasViewBag = this.modeloBD.sp_RetornaCuentasUsuario(modelo.IdCliente).ToList();
+            //}
+
+            try
+            {
+                cantRegistroAfectado = this.modeloBD.SP_Transferencias(
+                    modeloVista.Cuenta_Origen,
+                    modeloVista.Cuenta_Destino,
+                    modeloVista.Monto_Transferencia,
+                    modeloVista.Detalle
+                    );
+            }
+
+            catch (Exception error)
+            {
+                resultado = "Ocurrió un error: " + error.Message;
+            }
+            finally
+            {
+                if (cantRegistroAfectado > 0)
+                {
+                    resultado = "Registro insertado";
+                }
+                else
+                {
+                    resultado += "No se pudo realizar la transferencia";
+                }
+            }
+
+            Response.Write("<script language=javascript>alert('" + resultado + "')</script>");
+            this.AgregarCuentaViewBag();     
+            //this.ViewBag.CuentasViewBag();
+            return View();
+        }
+
+
+        /// <summary>
+        /// Trae los datos a mostrar para el KendoUI
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult RetornaTransferenciasLista()
         {
