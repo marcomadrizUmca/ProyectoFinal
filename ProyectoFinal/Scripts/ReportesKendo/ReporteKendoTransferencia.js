@@ -47,6 +47,10 @@ function creaGridKendo(data) {
                 field: 'Monto_Transferencia',
                 title: 'Monto de la Transferencia'
             },
+            {
+                field: 'Detalle',
+                title: 'Detalle'
+            },
 
         ],
         filterable: true,

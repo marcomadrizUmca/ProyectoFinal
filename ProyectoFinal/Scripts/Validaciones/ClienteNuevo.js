@@ -10,9 +10,11 @@ function creaValidaciones() {
         ///debe cumplir para ser considerado válido
         rules: {
 
-            Cedula: {
+            Cedula: {  
                 required: true,
-                maxlength: 9
+                maxlength: 10,
+                minlength: 6,
+                
             },
 
             Genero: {
@@ -41,13 +43,17 @@ function creaValidaciones() {
 
             Direccion_Fisica: {
                 required: true,
-                minlength: 3,
-                maxlength: 7
+                minlength: 3,  
             },
 
             Telefono_Principal: {
                 required: true,
-                maxlength: 12
+                maxlength: 12,
+                number: "Solo Numeros"
+            },
+
+            Telefono_Secundario: {
+                number :"Solo Numeros"
             },
 
             Correo_Electronico: {
@@ -99,13 +105,17 @@ function creaValidaciones() {
 
                 Direccion_Fisica: {
                     required: true,
-                    minlength: 3,
-                    maxlength: 7
+                    minlength: 3
                 },
 
                 Telefono_Principal: {
                     required: true,
-                    maxlength: 12
+                    maxlength: 12,
+                    number: "Solo Numeros"
+                },
+
+                Telefono_Secundario: {
+                    number: "Solo Numeros"
                 },
 
                 Correo_Electronico: {

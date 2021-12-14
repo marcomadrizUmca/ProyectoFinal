@@ -437,6 +437,12 @@
         <Function Name="sp_RetornaTransferencias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id_Transferencia" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="SP_Transferencias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cuenta_Origen" Type="int" Mode="In" />
+          <Parameter Name="Cuenta_Destino" Type="int" Mode="In" />
+          <Parameter Name="Monto_Transferencia" Type="decimal" Mode="In" />
+          <Parameter Name="Detalle" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="bancobdModelStoreContainer">
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
@@ -1009,6 +1015,12 @@
           <FunctionImport Name="sp_RetornaTransferencias" ReturnType="Collection(bancobdModel.sp_RetornaTransferencias_Result)">
             <Parameter Name="Id_Transferencia" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SP_Transferencias">
+            <Parameter Name="Cuenta_Origen" Mode="In" Type="Int32" />
+            <Parameter Name="Cuenta_Destino" Mode="In" Type="Int32" />
+            <Parameter Name="Monto_Transferencia" Mode="In" Type="Decimal" />
+            <Parameter Name="Detalle" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_AutenticarUsuario_Result">
           <Property Type="String" Name="usuario" Nullable="false" MaxLength="50" />
@@ -1131,6 +1143,7 @@
           <Property Type="Int32" Name="Id_Moneda" Nullable="false" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
           <Property Type="Decimal" Name="Monto_Transferencia" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="String" Name="Detalle" Nullable="false" MaxLength="30" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1464,9 +1477,11 @@
                 <ScalarProperty Name="Id_Moneda" ColumnName="Id_Moneda" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Monto_Transferencia" ColumnName="Monto_Transferencia" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Transferencias" FunctionName="bancobdModel.Store.SP_Transferencias" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

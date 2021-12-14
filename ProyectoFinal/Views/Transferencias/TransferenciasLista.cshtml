@@ -16,6 +16,7 @@
         <th id="Encabezado">Cuenta Destino</th>
         <th id="Encabezado">Tipo de Moneda</th>
         <th id="Encabezado">Monto Transferido</th>
+        <th id="Encabezado">Detalle</th>
 
     </tr>
     @{
@@ -27,6 +28,7 @@
                 <td>@posicionModelo.cuentaDestino</td>
                 <td>@posicionModelo.Nombre</td>
                 <td>@posicionModelo.Monto_Transferencia</td>
+                <td>@posicionModelo.Detalle</td>
 
 
                 @*<td>
@@ -40,4 +42,4 @@
     }
 </table>
 
-<ul><li><a id="Enlace" href="~/Retiros/InsertaRetiro" style="opacity:0.6">Agregar Nuevo Retiro</a></li></ul>
+<ul><li><a id="Enlace" href="~/Transferencias/InsertaTransferencias" style="opacity:0.6">Agregar Transferencia</a></li></ul>

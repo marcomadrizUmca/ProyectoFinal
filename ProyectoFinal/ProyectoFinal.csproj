@@ -248,6 +248,7 @@
     <Content Include="Content\CSS\CSS.css" />
     <Content Include="Content\CSS\CSSEliminar.css" />
     <Content Include="Content\CSS\Inicio.css" />
+    <Content Include="Content\Imagenes\Flowing-lines.jpg" />
     <Content Include="Content\Imagenes\moroccan-flower.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -317,7 +318,10 @@
     <Content Include="Scripts\ScriptGenerico.js" />
     <Content Include="Scripts\ValidacionesGenericas.js" />
     <Content Include="Scripts\Validaciones\ClienteNuevo.js" />
+    <Content Include="Scripts\Validaciones\Cuentas.js" />
     <Content Include="Scripts\Validaciones\Monedas.js" />
+    <Content Include="Scripts\Validaciones\TipoCliente.js" />
+    <Content Include="Scripts\Validaciones\TipoCuentas.js" />
     <Content Include="Video\Banco del Pueblo Soberano - Organizando las fuerzas productivas.mp4" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -361,6 +365,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Transferencias\TransferenciasLista.cshtml" />
     <Content Include="Views\ReportesTransferencias\ReporteTransferencias.cshtml" />
+    <Content Include="Views\Transferencias\InsertaTransferencias.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

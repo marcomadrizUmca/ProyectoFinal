@@ -73,13 +73,13 @@ namespace ProyectoFinal.Controllers
 
             modeloVista.Saldo = SaldoCuenta;
 
-            if (Session["datosUsuario"] != null)
-            {
-                sp_AutenticarUsuario_Result modelo = (sp_AutenticarUsuario_Result)this.Session["datosUsuario"];
+            //if (Session["datosUsuario"] != null)
+            //{
+            //    sp_AutenticarUsuario_Result modelo = (sp_AutenticarUsuario_Result)this.Session["datosUsuario"];
 
 
-                ViewBag.ListaCuenta = this.modeloBD.sp_RetornaCuentasUsuario(modelo.IdCliente).ToList();
-            }
+            //    ViewBag.ListaCuenta = this.modeloBD.sp_RetornaCuentasUsuario(modelo.IdCliente).ToList();
+            //}
 
             try
             {

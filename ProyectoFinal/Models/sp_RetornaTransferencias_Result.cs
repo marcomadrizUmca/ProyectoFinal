@@ -20,5 +20,6 @@ namespace ProyectoFinal.Models
         public int Id_Moneda { get; set; }
         public string Nombre { get; set; }
         public decimal Monto_Transferencia { get; set; }
+        public string Detalle { get; set; }
     }
 }

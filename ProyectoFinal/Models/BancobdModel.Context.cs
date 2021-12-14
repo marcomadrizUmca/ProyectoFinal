@@ -667,5 +667,26 @@ namespace ProyectoFinal.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaTransferencias_Result>("sp_RetornaTransferencias", id_TransferenciaParameter);
         }
+    
+        public virtual int SP_Transferencias(Nullable<int> cuenta_Origen, Nullable<int> cuenta_Destino, Nullable<decimal> monto_Transferencia, string detalle)
+        {
+            var cuenta_OrigenParameter = cuenta_Origen.HasValue ?
+                new ObjectParameter("Cuenta_Origen", cuenta_Origen) :
+                new ObjectParameter("Cuenta_Origen", typeof(int));
+    
+            var cuenta_DestinoParameter = cuenta_Destino.HasValue ?
+                new ObjectParameter("Cuenta_Destino", cuenta_Destino) :
+                new ObjectParameter("Cuenta_Destino", typeof(int));
+    
+            var monto_TransferenciaParameter = monto_Transferencia.HasValue ?
+                new ObjectParameter("Monto_Transferencia", monto_Transferencia) :
+                new ObjectParameter("Monto_Transferencia", typeof(decimal));
+    
+            var detalleParameter = detalle != null ?
+                new ObjectParameter("Detalle", detalle) :
+                new ObjectParameter("Detalle", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Transferencias", cuenta_OrigenParameter, cuenta_DestinoParameter, monto_TransferenciaParameter, detalleParameter);
+        }
     }
 }

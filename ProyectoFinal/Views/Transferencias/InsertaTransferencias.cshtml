@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "InsertaTransferencias";
+}
+
+<h2>InsertaTransferencias</h2>
+
+<link href="~/Content/CSS/CSSEliminar.css" rel="stylesheet" />
+<div id="Centrar">
+
+    <h2 style="opacity: 0.6">Inserta Retiro</h2>
+
+    <form id="frmNuevpRetiro" method="post">
+
+        @*Trae las cuentas*@
+        <div class="form-group">
+            <label>Numero de Cuenta Origen:</label>
+            <select name="Cuenta_Origen" id="Cuenta_Origen" class="form-control">
+                <option value="">SELECCIONE UNA OPCIÓN</option>
+                @{
+                    foreach (ProyectoFinal.Models.sp_RetornaCuentas_Result Cuenta
+                        in this.ViewBag.ListaCuenta)
+                    {
+                        <option value="@Cuenta.Id_Cuenta">@Cuenta.Numero_Cuenta.ToUpper()</option>
+                    }
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Numero de Cuenta Destino:</label>
+            <select name="Cuenta_Destino" id="Cuenta_Destino" class="form-control">
+                <option value="">SELECCIONE UNA OPCIÓN</option>
+                @{
+                    foreach (ProyectoFinal.Models.sp_RetornaCuentas_Result Cuenta
+                        in this.ViewBag.ListaCuenta)
+                    {
+                        <option value="@Cuenta.Id_Cuenta">@Cuenta.Numero_Cuenta.ToUpper()</option>
+                    }
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Monto de Transferencia:</label>
+            <input type="text" name="Monto_Transferencia" id="Monto_Transferencia" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Detalle:</label>
+            <input type="text" name="Detalle" id="Detalle" class="form-control" />
+        </div>
+
+
+
+        <div class="form-group">
+            <input class="boton_personalizado" type="submit" value="Guardar" id="btnAceptar" />
+            <a class="boton_personalizado" href="~/Transferencias/TransferenciasLista">Regresar a la Lista</a>
+        </div>
+    </form>
+</div>
