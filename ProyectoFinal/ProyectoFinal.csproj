@@ -251,6 +251,7 @@
     <Content Include="Content\CSS\Inicio.css" />
     <Content Include="Content\Imagenes\Flowing-lines.jpg" />
     <Content Include="Content\Imagenes\moroccan-flower.png" />
+    <Content Include="Content\Imagenes\SpriteBanco2.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -261,7 +262,6 @@
     <Content Include="Content\Imagenes\Banco3.jpg" />
     <Content Include="Content\Imagenes\Banco4.jpg" />
     <Content Include="Content\Imagenes\Banco5.jpg" />
-    <Content Include="Content\Imagenes\SpritesBanco.png" />
     <Content Include="Models\bancoBDModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>bancoBDModel.edmx</DependentUpon>
