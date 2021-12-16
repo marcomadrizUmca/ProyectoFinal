@@ -1,5 +1,13 @@
-﻿#.videoDiv {
+﻿#videoDiv {
     width: 70%; /*or whatever % you prefer*/
     margin: 0 auto;
+    display: block;
+    text-align:right;
+    
+}
+
+#Image {
+    width: 30%; /*or whatever % you prefer*/
+    margin: 0%;
     display: block;
 }

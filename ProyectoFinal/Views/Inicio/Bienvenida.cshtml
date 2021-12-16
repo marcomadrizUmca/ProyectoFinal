@@ -8,72 +8,9 @@
     <link href="~/Content/CSS/carouselSprite.css" rel="stylesheet" />
     <link href="~/Content/CSS/Bienvenida.css" rel="stylesheet" />
 }
-
-
-
-
-<div>
-    <form class="form-horizontal">
-        <div class="form-group">
-            <label class="control-label col-sm-1"></label>
-        </div>
-        <div class="center">
-            <h2>Bienvenido(a):</h2>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-sm-3" for="nombrecompleto"></label>
-            <div class="col-sm-4">
-                @Html.DisplayFor(model => model.nombrecompleto)
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-3" for="ultimoIngreso">Ultimo Ingreso:</label>
-            <div class="col-sm-4">
-                @Html.DisplayFor(model => model.ultimoIngreso)
-            </div>
-
-    </form>
-</div>
-<div>
 <figure>
-    <img src="~/Content/Imagenes/banco del pueblo.PNG" />
-
-
     <figcaption><h2>Somos del Pueblo y para el Pueblo</h2></figcaption>
 </figure>
-</div>
-</br>
-</br>
-</br>
-</br>
-
-
-
-
-<div class="videoDiv">
-    <h3>Ver Video</h3>
-
-
-    <video width="320" height="240" controls="controls">
-
-
-        <source src="~/Video/Banco%20del%20Pueblo%20Soberano%20-%20Organizando%20las%20fuerzas%20productivas.mp4" type="video/mp4" />
-
-        <source src="../Video/Banco%20del%20Pueblo%20Soberano%20-%20Organizando%20las%20fuerzas%20productivas.ogg" type="video/ogg" />
-        El navegador no soporta video.
-    </video>
-</div>
-
-<div class="form-group">
-    <h3>Audio</h3>
-    <audio controls>
-        <source src="../Audio/videoplayback.m4a" type="audio/mpeg">
-        El navegador no soporta audio.
-    </audio>
-</div>
-
-
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol id="olCarousel" class="carousel-indicators">
@@ -114,7 +51,52 @@
     </div>
 </div>
 
+<div>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-1"></label>
+        </div>
+        <div class="center">
+            <h2>Bienvenido(a):</h2>
+        </div>
 
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="nombrecompleto"></label>
+            <div class="col-sm-4">
+                @Html.DisplayFor(model => model.nombrecompleto)
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="ultimoIngreso">Ultimo Ingreso:</label>
+            <div class="col-sm-4">
+                @Html.DisplayFor(model => model.ultimoIngreso)
+
+               
+            </div>
+        </div>
+        <div id="videoDiv">
+            <video width="320" height="240" controls="controls">
+                <source src="~/Video/Banco%20del%20Pueblo%20Soberano%20-%20Organizando%20las%20fuerzas%20productivas.mp4" type="video/mp4" />
+                <source src="../Video/Banco%20del%20Pueblo%20Soberano%20-%20Organizando%20las%20fuerzas%20productivas.ogg" type="video/ogg" />
+                El navegador no soporta video.
+            </video>
+            <br />
+            <br />
+            <div class="form-group">            
+                <audio controls>
+                    <source src="../Audio/videoplayback.m4a" type="audio/mpeg">
+                    El navegador no soporta audio.
+                </audio>
+            </div>
+        </div>
+
+    </form>
+</div>
+<div>
+    
+
+ </div>
 
 
 
